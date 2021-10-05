@@ -66,28 +66,28 @@ c292 -97 699 -173 1127 -211 183 -16 750 -16 930 0 315 29 594 72 850 132 871
                     <article class="card">
                         <img src="dust.png" class="ico">
                        <p class="spec">PM2.5</p>
-                        <p class="value" id="AQI">136 <a class="CI">µg/m3</a></p>
+                        <p class="value" id="AQI"> <a class="CI">µg/m3</a></p>
                         <div class="liner"></div>
                     </article>
                     
                     <article class="card">
                         <img src="co2.svg" class="ico">
                      <p class="spec">CO2</p>
-                        <p class="value" id="CO2">45 <a class="CI">ppm</a></p>
+                       <p class="value" id="CO2"> <a class="CI">ppm</a></p>
                         <div class="liner"></div>
                     </article>
                     
                      <article class="card">
                          <img src="temp.svg" class="ico">
                         <p class="spec">Temperature</p>
-                        <p class="value" id="Temperature">14°C</p>
+                        <p class="value" id="Temperature"></p>
                         <div class="spec-liner"></div>
                     </article>
                     
                      <article class="card">
                          <img src="humidity.svg" class="ico">
                         <p class="spec">Humidity</p>
-                        <p class="value" id="Humidity">50%</p>
+                        <p class="value" id="Humidity"></p>
                          <div class="spec-liner1"></div>
                     </article>
                     
@@ -97,9 +97,31 @@ c292 -97 699 -173 1127 -211 183 -16 750 -16 930 0 315 29 594 72 850 132 871
         
     <div class="footer">
         <div class="inner-footer">
-              <a href="https://github.com/Simple-Coder964"><img src="github-outline.svg" class="git-link"></a>
+              <a href="https://github.com/KitrishAndrey"><img src="github-outline.svg" class="git-link"></a>
         </div>
     </div>
+     <script type="text/javascript">
         
+        async function datatouser(){
+            const response = await fetch('/test.txt');
+            const data = await response.text();
+            console.log(data);
+            
+            var info = data.split(":");
+
+            var AQI = info[0];
+            var CO2 = info[1];
+            var Temperature = info[2];
+            var Humidity = info[3];
+            
+            document.getElementById("AQI").innerHTML = AQI + " ";
+            document.getElementById("CO2").innerHTML = CO2 + " ";
+            document.getElementById("Temperature").innerHTML = Temperature + "°C";
+            document.getElementById("Humidity").innerHTML = Humidity + "%";
+        }
+        
+        let timerId = setInterval(() => datatouser(), 500);
+
+     </script>
 </body>
 </html>
