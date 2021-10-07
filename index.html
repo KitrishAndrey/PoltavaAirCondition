@@ -118,6 +118,47 @@ c292 -97 699 -173 1127 -211 183 -16 750 -16 930 0 315 29 594 72 850 132 871
             document.getElementById("CO2").innerHTML = CO2 + " ";
             document.getElementById("Temperature").innerHTML = Temperature + "°C";
             document.getElementById("Humidity").innerHTML = Humidity + "%";
+            
+            if(AQI > 0  || AQI <= 700){
+                console.log("yes it is");
+                document.getElementById("AQI").style.color = "#00ff41";
+            }
+            if (AQI > 700 || AQI <=1000){
+                document.getElementById("AQI").style.color = "#FFA500";
+            }
+            if (AQI > 1000){
+                document.getElementById("AQI").style.color= "#eb0b0f";
+            }
+            
+            if(CO2 > 0  || CO2 <= 50){
+                
+                document.getElementById("CO2").style.color = "#00ff41";
+            }
+            if (CO2 > 70 || CO2 <=100){
+                document.getElementById("CO2").style.color = "#FFA500";
+            }
+            if (CO2 > 100){
+                document.getElementById("CO2").style.color= "#eb0b0f";
+            }
+            
+            if(Humidity > 0  || Humidity <= 50){
+                
+                document.getElementById("Humidity").style.color = "#0530da";
+            }
+            if (Humidity > 70 || Humidity <=100){
+                document.getElementById("Humidity").style.color = "#0606d0";
+            }
+            if (Humidity >= 100){
+                document.getElementById("Humidity").style.color= "#0505a6";
+            }
+            
+            if(Temperature > 0 ){
+                
+                document.getElementById("Temperature").style.color = "#fd1d1d";
+            }
+            if (Temperature <= 0){
+                document.getElementById("Temperature").style.color = "#0e96f8";
+            }
         }
         
         let timerId = setInterval(() => datatouser(), 500);
