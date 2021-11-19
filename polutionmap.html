@@ -1,57 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
  <head>
-  <meta charset="utf-8">
-  <title>PoltavaAirCondition</title>
+     <meta name="viewport" content="width=device-width; initial-scale=1.0">
+    <meta charset="utf-8">
+        <title>PoltavaAirCondition</title>
      <link rel="stylesheet" href="polutionmap.css">
      <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
     integrity="sha512-  xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
    crossorigin=""/>
-     <meta name="viewport" root="width=device-width, initial-scale=1, shrink-to-fit=no">
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet"> 
+
  </head>
  <body>
-     <div class="content" id="ctid">
-    
-       <nav class="nav">
-                <ul class="menu" id="menu">
-                    <li><a class="menu__item" href="/index.html">На головну</a></li>
-                    <hr class="menuhr">
-                </ul>
-            </nav>
-          
+     <div class="content">
 
      <div class="map" id="mapid">
     </div>
      </div>
-    <script src = "http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.6.2.min.js"></script>
-     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
-        integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
-        crossorigin=""></script>
+     
+      <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+   integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+   crossorigin=""></script>
+  
      <script>
-         
-        function gettingJSON(){
-        
-        $.getJSON("http://api.openweathermap.org/data/2.5/weather?q=Poltava&appid=4f94e889cce69a0249de9ed75c25da83&units=metric",function(json){
-            console.log(json.main.temp);
-            var temp = json.main.temp;
-        });
-        }
-         
-        gettingJSON();
         var mymap = L.map('mapid').setView([49.58951, 34.55071], 13.5);
          L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
         attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-        maxZoom: 18,
         id: 'mapbox/streets-v11',
         tileSize: 512,
         zoomOffset: -1,
-        accessToken: 'pk.eyJ1Ijoib2RhcyIsImEiOiJja3V5a3BhMDMwN3NkMnVsdHN0bmtwbW1kIn0.3QJzARbG7DTxkxw8kO0dbg'
+        accessToken: '***********************************'
          }).addTo(mymap);
-         
          
          var legend = L.control({ position: "bottomleft" });
          
-         legend.onAdd = function(map) {
+         legend.onAdd = function(mymap) {
             var div = L.DomUtil.create("div", "AQILEGEND");
             div.innerHTML += '<div class="unit">AQI PM2.5</div>';
             div.innerHTML += '<span class="l-0"><i></i><b>н/д</b></span>';
@@ -71,22 +56,22 @@
          
          legend.onAdd = function(mymap) {
             var div = L.DomUtil.create("button", "menu-open");
-            div.innerHTML += '<img src="free-icon-web-house-15730.svg" class="burger" alt="Open menu">';
+            div.innerHTML += '<a class="home-link" href="https://poltavaaircondition.online"><img src="free-icon-web-house-15730.svg" class="burger" alt="Open menu"></a>';
              
             return div;
          };
 
          legend.addTo(mymap);
-        
+         
          
          const contentString = '<div class="flyier" id="flyier">'+'<article class="card-1">' +
               
                     '<p class="spec">PM2.5</p>'+
-                    '<p class="value" id="AQI">136 мкг/м3</p>'+
+                    '<p class="value" id="AQI"></p>'+
                     '<p class="spec">CO2</p>'+
-                    '<p class="value" id="CO2">  45 ppm(млн−1)</p>'+
+                    '<p class="value" id="CO2"></p>'+
                     '<p class="spec">Температура</p>'+
-                    '<p class="value" id="Temperature">14°C</p>'+
+                    '<p class="value" id="Temperature"></p>'+
                     '<p class="spec">Вологість</p>'+
                     '<p class="value" id="Humidity"></p>'+
             '</article>'+
@@ -96,13 +81,13 @@
          const contentString1 = '<div class="flyier" id="flyier">'+'<article class="card-1">' +
               
                     '<p class="spec">PM2.5</p>'+
-                    '<p class="value" id="AQI1">136 мкг/м3</p>'+
+                    '<p class="value" id="AQI1"></p>'+
                     '<p class="spec">CO2</p>'+
-                    '<p class="value" id="CO21">45 ppm(млн−1)</p>'+
+                    '<p class="value" id="CO21"></p>'+
                     '<p class="spec">Температура</p>'+
-                    '<p class="value" id="Temperature1">14°C</p>'+
+                    '<p class="value" id="Temperature1"></p>'+
                     '<p class="spec">Вологість</p>'+
-                    '<p class="value" id="Humidity1">50%</p>'+
+                    '<p class="value" id="Humidity1"></p>'+
             '</article>'+
             
         '</div>' ;
@@ -114,7 +99,7 @@
             shadowSize:   [50, 64],
             iconAnchor:   [22, 94],
             shadowAnchor: [4, 62],
-            popupAnchor:  [15, -78]
+            popupAnchor:  [15, -80]
             }
                 });
          
@@ -124,77 +109,122 @@
             });
          
          function clickZoom(e) {
-              mymap.flyTo(e.target.getLatLng(), 16);
+              mymap.flyTo(e.target.getLatLng(), 18);
             };
-         var marker = L.marker([49.5843, 34.5877], {icon: greenIcon, autoPan: false}).addTo(mymap);
+         var marker = L.marker([49.58461, 34.5877], {icon: greenIcon, autoPan: false}).addTo(mymap);
          marker.bindPopup(contentString).on('popupopen', clickZoom);
          
-         var marker = L.marker([49.60058, 34.53116 ], {icon: greenIcon, autoPan: false}).addTo(mymap);
+         var marker = L.marker([49.60064, 34.53081], {icon: greenIcon, autoPan: false}).addTo(mymap);
          marker.bindPopup(contentString1).on('popupopen', clickZoom);
          
-    
+      
+        
+        var myHeaders = new Headers();
+            myHeaders.append('pragma', 'no-cache');
+            myHeaders.append('cache-control', 'no-cache');
+            
+        var myInit = {
+            method: 'GET',
+            headers: myHeaders,
+            };
+        
+        
+        async function datatouser2(){
+            
+            const response2 = await fetch('sensor2.txt', myInit);
+            const temphumr2 = await fetch('temphum.txt', myInit);
+            var temphumd2 = await temphumr2.text();
+            var data2 = await response2.text();
+            console.log("Data!!! " + data2);
+            
+            var info2 = data2.split(":");
+            var temphuminfo2 = temphumd2.split(":");
+            
+            var AQI2 = info2[0] * 4;
+            var CO22 = info2[1] * 4;
+            var Temperature2 = temphuminfo2[0];
+            var Humidity2 = temphuminfo2[1];
+
+            
+            document.getElementById("AQI1").innerHTML = AQI2 + " " + "ppm";
+            document.getElementById("CO21").innerHTML = CO22 + " " + "ppm";
+            document.getElementById("Temperature1").innerHTML = Temperature2 + "°C";
+            document.getElementById("Humidity1").innerHTML = Humidity2 + "%";
+        };
          
         async function datatouser(){
-            const response = await fetch('/test.txt');
-            const data = await response.text();
+            
+            const response = await fetch('sensor1.txt', myInit);
+            const rextra = await fetch('sensor2.txt', myInit);
+            const temphumr = await fetch('temphum.txt', myInit);
+            var temphumd = await temphumr.text();
+            var data = await response.text();
+            var dataextra = await rextra.text();
             console.log(data);
             
             var info = data.split(":");
-
-            var AQI = info[0];
-            var CO2 = info[1];
-            var Temperature = info[2];
-            var Humidity = gettingJSON();
+            var temphuminfo = temphumd.split(":");
+            var extrainfo = dataextra.split(":");
             
-            document.getElementsByClassName("AQI").innerHTML = AQI + " " + "µg/m3";
+            var AQI = info[0] * 4;
+            var CO2 = extrainfo[0] * 4;
+            var Temperature = temphuminfo[0];
+            var Humidity = temphuminfo[1];
+            
+            
+            document.getElementById("AQI").innerHTML = AQI + " " + "ppm";
             document.getElementById("CO2").innerHTML = CO2 + " " + "ppm";
-            document.getElementById("Temperature").innerHTML = Humidity + " "+ "wd";
+            document.getElementById("Temperature").innerHTML = Temperature + "°C";
             document.getElementById("Humidity").innerHTML = Humidity + "%";
             
-            if(AQI > 0  || AQI <= 700){
+            if (AQI > 0  || AQI < 50){
                 console.log("yes it is");
-                document.getElementById("AQI").style.color = "#00ff41";
-            }
-            if (AQI > 700 || AQI <=1000){
-                document.getElementById("AQI").style.color = "#FFA500";
-            }
-            if (AQI > 1000){
-                document.getElementById("AQI").style.color= "#eb0b0f";
+                document.getElementById("AQI").style.color = "#17a355";
             }
             
-            if(CO2 > 0  || CO2 <= 50){
+            else if (AQI > 51 || AQI < 100){
+                console.log("yes it is!!!!!!!!!!");
+                document.getElementById("AQI").style.color = "#e9d109";
+            }
+            
+            else if (AQI > 101  || AQI < 150){
+                document.getElementById("AQI").style.color= "#ea270d";
+            }
+            
+            if(CO2 > 0  || CO2 <400){
                 
-                document.getElementById("CO2").style.color = "#00ff41";
+                document.getElementById("CO2").style.color = "#17a355";
             }
-            if (CO2 > 70 || CO2 <=100){
-                document.getElementById("CO2").style.color = "#FFA500";
+            if (CO2 > 401 || CO2 <500){
+                document.getElementById("CO2").style.color = "#e9d109";
             }
-            if (CO2 > 100){
-                document.getElementById("CO2").style.color= "#eb0b0f";
+            if (CO2 > 501){
+                document.getElementById("CO2").style.color= "#ea270d";
             }
             
-            if(Humidity > 0  || Humidity <= 50){
+            if(Humidity > 0  || Humidity < 50){
                 
                 document.getElementById("Humidity").style.color = "#0530da";
             }
-            if (Humidity > 70 || Humidity <=100){
+            if (Humidity > 70 || Humidity <100){
                 document.getElementById("Humidity").style.color = "#0606d0";
             }
-            if (Humidity >= 100){
+            if (Humidity > 100){
                 document.getElementById("Humidity").style.color= "#0505a6";
             }
             
             if(Temperature > 0 ){
                 
-                document.getElementById("Temperature").style.color = "#fd1d1d";
+                document.getElementById("Temperature").style.color = "#ea270d";
             }
-            if (Temperature <= 0){
+            if (Temperature < 0){
                 document.getElementById("Temperature").style.color = "#0e96f8";
             }
-        }
+        };
          
  
-        let timerId = setInterval(() => datatouser(), 500);
+        let timerId = setInterval(() => datatouser(), 2000);
+        let timerId2 = setInterval(() => datatouser2(), 2000);
      
      </script>
  </body>
