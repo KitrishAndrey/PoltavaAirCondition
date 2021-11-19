@@ -1,0 +1,139 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.body{
+    height: 100vh;
+    width: 100%;
+    font-family: 'Rubik', sans-serif;
+}
+
+.map{
+    position: absolute;
+    top: 0;
+    left:0;
+    height: 100vh;
+    width:100vw;
+}
+
+#mapid{
+    max-height: 100%;
+    max-width: 100%;
+}
+
+.burger{
+    width: 30px;
+    height: 35px; 
+}
+
+
+.flyier{
+    position: relative;
+    height: 500px;
+    width: 6000px;
+}
+
+.card-1{
+    position: absolute;
+    display: flex;
+    flex-flow: row;
+    font-size:20px;
+}
+
+.spec{
+    display: flex;
+    border: white;
+    border-radius: 90%;
+}
+
+.value{
+    position: relative;
+    display: flex;
+    flex-direction:row;
+    top:34px;
+    left: -70px;
+    width:100px;
+}
+
+.leaflet-popup-content-wrapper {
+    width: 670px;
+
+}
+
+
+/*Legend specific*/
+.AQILEGEND{
+    display:  flex;
+    position: relative;
+    flex-direction: column;
+    margin-left: 8px;
+      padding: 6px 8px;
+        background: white;
+    background: rgba(255, 255, 255, 0.8);
+  /*box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);*/
+  /*border-radius: 5px;*/
+    line-height: 24px;
+    color: black;
+    width:70px;
+    border-radius: 5%;
+    border: 1px solid #666;
+    
+}
+
+.l-0{
+    background: #bbbbbb;
+}
+.l-1{
+    background: #17a355;
+}
+.l-2{
+    background: #e9d109;
+}
+.l-3{
+    background: #f37e00;
+}
+.l-4{
+    background: #ea270d;
+}
+.l-5{
+    background: #7c2c85;
+}
+.l-6{
+    background: #66001f;
+}
+
+@media only screen and (max-width:768px){
+    
+    .menu{
+        font-size:25px;
+        width:300px;
+    }
+    
+    .flyier{
+        font-size: 20px;
+    }
+   
+}
+
+@media only screen and (min-width:200px){
+    .menu{
+        font-size:25px;
+        width:350px;
+    }
+    .menu-open{
+        width:40px;
+        height: 40px;
+    }
+    
+    .flyier{
+        font-size: 25px;
+    }
+    
+     
+}
+
+
+@media screen and (max-width:380px){
+  
+}

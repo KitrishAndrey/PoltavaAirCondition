@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width; initial-scale=1.0">
+    <meta charset="UTF-8">
+    <title>PoltavaAirCondition</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    <link
+    rel="stylesheet"
+          href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+    integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+    crossorigin=""
+          />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet"> 
+    
+ 
+    
+</head>
+<body>
+    <div class="content">
+    <div class="inner-header">
+            <img class="col-4" id="header-ico" src="header-ico.png">
+            <h1 class="col-8" id="name">Poltava Air Condition</h1>
+            <button class="hamburger">&#9776;</button>
+            <button class="cross">&#735;</button>
+        
+    </div>
+        <div class="menu">
+            <ul>
+            <a href="#"><li>МАПА</li></a>
+            <a href="#"><li>ПРО ПРОЄКТ</li></a>
+            </ul>
+        </div> 
+        
+    
+        
+                  
+        <div class="header" id="firstpage">
+            <p class="col-8" id="description"> Слідкуйте за станом повітря у місті Полтава разом з <br><strong>Poltava Air Condition</strong> 
+            <div class="wrapper"></div>
+             <div class="col-10" id="map-conteiner">
+                <div class="map" id="mapid"></div>
+                <a class="scale-btn" href="polutionmap.html"><img src="pin.svg" class="pin-btn"></a>
+            </div>
+        </div>
+        
+        
+        <div class="inner-footer">
+              <a href="https://github.com/KitrishAndrey"><img src="github-outline.svg" class="git-link"></a>
+              <a href="https://t.me/Odas00"><img src="free-icon-telegram-2111813.svg" class="telegram-link"></a>
+    </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+        integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+        crossorigin=""></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+
+    <script>
+        
+        $( document ).ready(function() {
+
+        $( ".cross" ).hide();
+            $( ".menu" ).hide();
+            $( ".hamburger" ).click(function() {
+                $( ".menu" ).slideToggle( "slow", function() {
+                    $( ".hamburger" ).hide();
+                    $( ".cross" ).show();
+                });
+            });
+
+            $( ".cross" ).click(function() {
+                $( ".menu" ).slideToggle( "slow", function() {
+                    $( ".cross" ).hide();
+                    $( ".hamburger" ).show();
+                });
+            });
+
+        });
+        
+         var mymap = L.map('mapid').setView([49.58951, 34.55071], 11);
+         L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
+        attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+        maxZoom: 18,
+        id: 'mapbox/streets-v11',
+        tileSize: 512,
+        zoomOffset: -1,
+        accessToken: 'pk.eyJ1Ijoib2RhcyIsImEiOiJja3V5a3BhMDMwN3NkMnVsdHN0bmtwbW1kIn0.3QJzARbG7DTxkxw8kO0dbg'
+         }).addTo(mymap);
+         
+         const contentString = '<div class="flyier" id="flyier">'+'<article class="card-1">' +
+              
+                    '<p class="spec">PM2.5</p>'+
+                    '<p class="value" id="AQI">136 мкг/м3</p>'+
+                    '<hr>'+
+                    '<p class="spec">CO2</p>'+
+                    '<p class="value" id="CO2">45 ppm(млн−1)</p>'+
+                    '<hr>'+
+                    '<p class="spec">Температура</p>'+
+                    '<p class="value" id="Temperature">14°C</p>'+
+                    '<hr>'+
+                    '<p class="spec">Вологість</p>'+
+                    '<p class="value" id="Humidity">50%</p>'+
+            '</article>'+
+            
+        '</div>' ;
+         
+         const contentString1 = '<div class="flyier" id="flyier">'+'<article class="card-1">' +
+              
+                    '<p class="spec">PM2.5</p>'+
+                    '<p class="value" id="AQI1">136 мкг/м3</p>'+
+                    '<hr>'+
+                    '<p class="spec">CO2</p>'+
+                    '<p class="value" id="CO21">45 ppm(млн−1)</p>'+
+                    '<hr>'+
+                    '<p class="spec">Температура</p>'+
+                    '<p class="value" id="Temperature1">14°C</p>'+
+                    '<hr>'+
+                    '<p class="spec">Вологість</p>'+
+                    '<p class="value" id="Humidity1">50%</p>'+
+            '</article>'+
+            
+        '</div>' ;
+         
+         
+         var LeafIcon = L.Icon.extend({
+            options: {
+            iconSize:     [90, 95],
+            shadowSize:   [50, 64],
+            iconAnchor:   [22, 94],
+            shadowAnchor: [4, 62],
+            popupAnchor:  [15, -78]
+            }
+                });
+         
+         var greenIcon = new LeafIcon({
+            iconUrl: "map-marker-svgrepo-com.svg",
+            shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/1.0.4/images/marker-shadow.png'
+            });
+         
+         function clickZoom(e) {
+              mymap.flyTo(e.target.getLatLng(), 16);
+            };
+         var marker = L.marker([49.5843, 34.5877], {icon: greenIcon, autoPan: false}).addTo(mymap);
+         marker.bindPopup(contentString).on('popupopen', clickZoom);
+         
+         var marker = L.marker([49.60058, 34.53116 ], {icon: greenIcon, autoPan: false}).addTo(mymap);
+         marker.bindPopup(contentString1).on('popupopen', clickZoom);
+         
+        
+        document.querySelector('.menu-open').addEventListener('click', () => {
+        document.getElementById("menu").classList.toggle('show-menu');
+        });
+        
+    </script>
+</body>
+</html>

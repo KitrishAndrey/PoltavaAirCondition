@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width; initial-scale=1.0">
+    <meta charset="UTF-8">
+    <title>PoltavaAirCondition</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="infopage.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet"> 
+    
+ 
+    
+</head>
+<body>
+    <div class="content">
+    <div class="inner-header">
+            <img class="col-4" id="header-ico" src="header-ico.png">
+            <h1 class="col-8" id="name">Poltava Air Condition</h1>
+            <button class="hamburger">&#9776;</button>
+            <button class="cross">&#735;</button>
+        
+    </div>
+        <div class="menu">
+            <ul>
+            <a href="#"><li>МАПА</li></a>
+            <a href="#"><li>НА ГОЛОВНУ</li></a>
+            </ul>
+        </div>       
+        <div class="header" id="firstpage">
+            <div class="general-info">
+            <h1 class="about"><strong>Про проєкт</strong></h1>
+            <h2 class="col-2" id="about-info"><strong>PoltavaAirCondition - це частина науково дослідницької роботи, яка оперує даними, щодо рівня забрудненя повітря у м.Полтава</strong></h2>
+            <p class="what">Алгоритм проєкту може  легко знайти та впорядкувати для вас наступну інформацію:</p>
+            <ul class="abilities">
+                <li>Добовий моніторинг якості повітря у м.Полтава, в якому у реальному часі відображаються показники з спец-станцій, та оновлюються кожні 20хв.</li>
+                <li>Дані про концентрацію шкідливих часток РМ2.5 у повітрі.</li>
+                <li>Дані про концентрацію ввуглекислого газу СО2 у повітрі.</li>
+                <li>Дані про температуру та вологість повітря.</li>
+            </ul>
+            <p class="what-about-tehnology">Дані, щодо якості повітря, отримуються з спеціально обладнаних станцій моніторингу забрудненості повітря які розташовані у різних кутках м.Полтави</p>
+            </div>
+        </div>    
+        <div class="inner-footer">
+              <a href="https://github.com/KitrishAndrey"><img src="github-outline.svg" class="git-link"></a>
+              <a href="https://t.me/Odas00"><img src="free-icon-telegram-2111813.svg" class="telegram-link"></a>
+    </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+     <script>$( document ).ready(function() {
+
+        $( ".cross" ).hide();
+            $( ".menu" ).hide();
+            $( ".hamburger" ).click(function() {
+                $( ".menu" ).slideToggle( "slow", function() {
+                    $( ".hamburger" ).hide();
+                    $( ".cross" ).show();
+                });
+            });
+
+            $( ".cross" ).click(function() {
+                $( ".menu" ).slideToggle( "slow", function() {
+                    $( ".cross" ).hide();
+                    $( ".hamburger" ).show();
+                });
+            });
+
+        });
+    </script>
+</body>
+</html>

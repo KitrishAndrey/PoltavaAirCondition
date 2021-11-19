@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="utf-8">
+  <title>PoltavaAirCondition</title>
+     <link rel="stylesheet" href="polutionmap.css">
+     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+    integrity="sha512-  xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+   crossorigin=""/>
+     <meta name="viewport" root="width=device-width, initial-scale=1, shrink-to-fit=no">
+ </head>
+ <body>
+     <div class="content" id="ctid">
+    
+       <nav class="nav">
+                <ul class="menu" id="menu">
+                    <li><a class="menu__item" href="/index.html">На головну</a></li>
+                    <hr class="menuhr">
+                </ul>
+            </nav>
+          
+
+     <div class="map" id="mapid">
+    </div>
+     </div>
+    <script src = "http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.6.2.min.js"></script>
+     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+        integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+        crossorigin=""></script>
+     <script>
+         
+        function gettingJSON(){
+        
+        $.getJSON("http://api.openweathermap.org/data/2.5/weather?q=Poltava&appid=4f94e889cce69a0249de9ed75c25da83&units=metric",function(json){
+            console.log(json.main.temp);
+            var temp = json.main.temp;
+        });
+        }
+         
+        gettingJSON();
+        var mymap = L.map('mapid').setView([49.58951, 34.55071], 13.5);
+         L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
+        attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+        maxZoom: 18,
+        id: 'mapbox/streets-v11',
+        tileSize: 512,
+        zoomOffset: -1,
+        accessToken: 'pk.eyJ1Ijoib2RhcyIsImEiOiJja3V5a3BhMDMwN3NkMnVsdHN0bmtwbW1kIn0.3QJzARbG7DTxkxw8kO0dbg'
+         }).addTo(mymap);
+         
+         
+         var legend = L.control({ position: "bottomleft" });
+         
+         legend.onAdd = function(map) {
+            var div = L.DomUtil.create("div", "AQILEGEND");
+            div.innerHTML += '<div class="unit">AQI PM2.5</div>';
+            div.innerHTML += '<span class="l-0"><i></i><b>н/д</b></span>';
+            div.innerHTML += '<span class="l-1"><i></i><b>0-50</b></span>';
+            div.innerHTML += '<span class="l-2"><i></i><b>51-100</b><</span>';
+            div.innerHTML += '<span class="l-3"><i></i><b>101-150</b>></span>';
+            div.innerHTML += '<span class="l-4"><i></i><b>151-200</b></span>';
+            div.innerHTML += '<span class="l-5"><i></i><b>201-300</b></span>';
+            div.innerHTML += '<span class="l-6"><i></i><b>301+</b></span>';
+             
+            return div;
+         };
+
+         legend.addTo(mymap);
+         
+         var legend = L.control({ position: "topright" });
+         
+         legend.onAdd = function(mymap) {
+            var div = L.DomUtil.create("button", "menu-open");
+            div.innerHTML += '<img src="free-icon-web-house-15730.svg" class="burger" alt="Open menu">';
+             
+            return div;
+         };
+
+         legend.addTo(mymap);
+        
+         
+         const contentString = '<div class="flyier" id="flyier">'+'<article class="card-1">' +
+              
+                    '<p class="spec">PM2.5</p>'+
+                    '<p class="value" id="AQI">136 мкг/м3</p>'+
+                    '<p class="spec">CO2</p>'+
+                    '<p class="value" id="CO2">  45 ppm(млн−1)</p>'+
+                    '<p class="spec">Температура</p>'+
+                    '<p class="value" id="Temperature">14°C</p>'+
+                    '<p class="spec">Вологість</p>'+
+                    '<p class="value" id="Humidity"></p>'+
+            '</article>'+
+            
+        '</div>' ;
+         
+         const contentString1 = '<div class="flyier" id="flyier">'+'<article class="card-1">' +
+              
+                    '<p class="spec">PM2.5</p>'+
+                    '<p class="value" id="AQI1">136 мкг/м3</p>'+
+                    '<p class="spec">CO2</p>'+
+                    '<p class="value" id="CO21">45 ppm(млн−1)</p>'+
+                    '<p class="spec">Температура</p>'+
+                    '<p class="value" id="Temperature1">14°C</p>'+
+                    '<p class="spec">Вологість</p>'+
+                    '<p class="value" id="Humidity1">50%</p>'+
+            '</article>'+
+            
+        '</div>' ;
+         
+         
+         var LeafIcon = L.Icon.extend({
+            options: {
+            iconSize:     [90, 95],
+            shadowSize:   [50, 64],
+            iconAnchor:   [22, 94],
+            shadowAnchor: [4, 62],
+            popupAnchor:  [15, -78]
+            }
+                });
+         
+         var greenIcon = new LeafIcon({
+            iconUrl: "map-marker-svgrepo-com.svg",
+            shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/1.0.4/images/marker-shadow.png'
+            });
+         
+         function clickZoom(e) {
+              mymap.flyTo(e.target.getLatLng(), 16);
+            };
+         var marker = L.marker([49.5843, 34.5877], {icon: greenIcon, autoPan: false}).addTo(mymap);
+         marker.bindPopup(contentString).on('popupopen', clickZoom);
+         
+         var marker = L.marker([49.60058, 34.53116 ], {icon: greenIcon, autoPan: false}).addTo(mymap);
+         marker.bindPopup(contentString1).on('popupopen', clickZoom);
+         
+    
+         
+        async function datatouser(){
+            const response = await fetch('/test.txt');
+            const data = await response.text();
+            console.log(data);
+            
+            var info = data.split(":");
+
+            var AQI = info[0];
+            var CO2 = info[1];
+            var Temperature = info[2];
+            var Humidity = gettingJSON();
+            
+            document.getElementsByClassName("AQI").innerHTML = AQI + " " + "µg/m3";
+            document.getElementById("CO2").innerHTML = CO2 + " " + "ppm";
+            document.getElementById("Temperature").innerHTML = Humidity + " "+ "wd";
+            document.getElementById("Humidity").innerHTML = Humidity + "%";
+            
+            if(AQI > 0  || AQI <= 700){
+                console.log("yes it is");
+                document.getElementById("AQI").style.color = "#00ff41";
+            }
+            if (AQI > 700 || AQI <=1000){
+                document.getElementById("AQI").style.color = "#FFA500";
+            }
+            if (AQI > 1000){
+                document.getElementById("AQI").style.color= "#eb0b0f";
+            }
+            
+            if(CO2 > 0  || CO2 <= 50){
+                
+                document.getElementById("CO2").style.color = "#00ff41";
+            }
+            if (CO2 > 70 || CO2 <=100){
+                document.getElementById("CO2").style.color = "#FFA500";
+            }
+            if (CO2 > 100){
+                document.getElementById("CO2").style.color= "#eb0b0f";
+            }
+            
+            if(Humidity > 0  || Humidity <= 50){
+                
+                document.getElementById("Humidity").style.color = "#0530da";
+            }
+            if (Humidity > 70 || Humidity <=100){
+                document.getElementById("Humidity").style.color = "#0606d0";
+            }
+            if (Humidity >= 100){
+                document.getElementById("Humidity").style.color= "#0505a6";
+            }
+            
+            if(Temperature > 0 ){
+                
+                document.getElementById("Temperature").style.color = "#fd1d1d";
+            }
+            if (Temperature <= 0){
+                document.getElementById("Temperature").style.color = "#0e96f8";
+            }
+        }
+         
+ 
+        let timerId = setInterval(() => datatouser(), 500);
+     
+     </script>
+ </body>
+</html>
