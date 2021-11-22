@@ -43,7 +43,7 @@
         id: 'mapbox/streets-v11',
         tileSize: 512,
         zoomOffset: -1,
-        accessToken: '*************************'
+        accessToken: '***********************************************'
          }).addTo(mymap);
          
          var legend = L.control({ position: "bottomleft" });
@@ -186,13 +186,12 @@
             document.getElementById("Temperature1").innerHTML = Temperature2 + "°C";
             document.getElementById("Humidity1").innerHTML = Humidity2 + "%";
           
-            
-             if (AQI2 > 0  ||  AQI2 < 50){
+           if (AQI2 > 0 &&   AQI2 < 50){
 
                 document.getElementById("AQI1").style.color = "#17a355";
             };
             
-            if (AQI2 > 51 || AQI2 < 100){
+            if (AQI2 > 51 && AQI2 < 100){
                 console.log("yes it is!!!!!!!!!!");
                 document.getElementById("AQI1").style.color = "#e9d109";
             };
@@ -201,16 +200,17 @@
                 document.getElementById("AQI1").style.color= "#ea270d";
             };
             
-            if(CO22 > 0  || CO22 <400){
+            if(CO22 > 0  && CO22 <400){
                 
                 document.getElementById("CO21").style.color = "#17a355";
             };
-            if (CO22 > 401 || CO22 <500){
+            if (CO22 > 401 && CO22 <500){
                 document.getElementById("CO21").style.color = "#e9d109";
             };
             if (CO22 > 501){
                 document.getElementById("CO21").style.color= "#ea270d";
             };
+             
             
             if(Humidity2 > 0  || Humidity2 < 50){
                 
@@ -259,25 +259,25 @@
             document.getElementById("Temperature").innerHTML = Temperature + "°C";
             document.getElementById("Humidity").innerHTML = Humidity + "%";
             
-            if (AQI > 0  || AQI < 50){
+            if (AQI > 0  && AQI < 50){
                 console.log("yes it is");
                 document.getElementById("AQI").style.color = "#17a355";
             }
             
-            else if (AQI > 51 || AQI < 100){
+            else if (AQI > 51 && AQI < 100){
                 console.log("yes it is!!!!!!!!!!");
                 document.getElementById("AQI").style.color = "#e9d109";
             }
             
-            else if (AQI > 101  || AQI < 150){
+            else if (AQI > 101  && AQI < 150){
                 document.getElementById("AQI").style.color= "#ea270d";
             }
             
-            if(CO2 > 0  || CO2 <400){
+            if(CO2 > 0  && CO2 <400){
                 
                 document.getElementById("CO2").style.color = "#17a355";
             }
-            if (CO2 > 401 || CO2 <500){
+            if (CO2 > 401 && CO2 <500){
                 document.getElementById("CO2").style.color = "#e9d109";
             }
             if (CO2 > 501){
