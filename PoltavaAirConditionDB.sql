@@ -21,8 +21,8 @@ SET time_zone = "+00:00";
 --
 -- База данных: `d91808_Hourdatadb`
 --
-CREATE DATABASE IF NOT EXISTS `d91808_Hourdatadb` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
-USE `d91808_Hourdatadb`;
+CREATE DATABASE IF NOT EXISTS `HourDataDB` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+USE `HourDataDB`;
 
 -- --------------------------------------------------------
 
