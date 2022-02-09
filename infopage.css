@@ -1,52 +1,90 @@
 *{
-  box-sizing: border-box;  
-  color: black;
-  font-family: 'Roboto', sans-serif;
+    box-sizing: border-box;  
+    color: black;
+    font-family: 'Roboto', sans-serif;
 }
 
 body{
     font-size: 20px;
     margin: 0;
-    
 }
-
 .content{
     position: relative;
-    height:220vh;
+    height:170vh;
 }
 
 .header {
     width: 100%;
-    height: 210vh;
+    height: 150vh;
     position: absolute;
     background: #EEEFF1;
     top:0;
     background-size: 300% 300%;
+    box-shadow: 2px 0 3px #000;
     padding: 20px;
     line-height: 1.7;
-    box-shadow: 2px 0 3px #000;
 }
 
+.general-info{
+    position: absolute;
+    top:15%;
+    left:-0.5%;
+     text-align: inherit;
+}
 
+.about{
+    position: relative;
+    top:7%;
+    text-align: center;
+}
+
+#about-info{
+    position: relative;
+    top:7%;
+    width:60%;
+    left:21.5%;
+    
+}
+
+.what{
+    position: relative;
+    top:10%;
+    width:60%;
+    left:21.5%;
+ 
+}
+
+.abilities{
+    position: relative;
+    top:5%;
+    width:60%;
+    left:21.5%;
+    margin: 40px;
+    padding: 20px;
+    line-height: 2
+}
+
+.what-about-tehnology{
+    position: relative;
+    top:3%;
+    width:60%;
+    left:21.5%;
+}
 
 .inner-header{
-    position:absolute;
+    position:fixed;
     height: 70px;
-    width: 100%;
+    width: 100vw;
     z-index: 4000;
     line-height:60px;
     text-align: center;
- 
+
     background: #34547A;
    
     background-size: 200% 200%;
     -webkit-box-shadow: 0px 2px 3px 3px rgba(39, 53, 64, 0.2);
     -moz-box-shadow: 0px 2px 3px 3px rgba(39, 53, 64, 0.2);
     box-shadow: 0px 2px 3px 3px rgba(39, 53, 64, 0.2);
-}
-
-.inner-header_black{
-    background: currentColor;
 }
 
 #header-ico{
@@ -60,17 +98,16 @@ body{
 #name{
     position: absolute;
     top:12%;
-    left: 19.5%;
+    left: 18.98%;
     color: white;
     font-size: 3rem ;
     text-shadow: 0px 1px 1px rgba(0, 0, 0, 0.9);
     
 }
 
-
 .hr{
-    background-color: white;
-    color:white;
+    background-color: #666;
+    color:#666;
     width:100%;
 }
 
@@ -78,7 +115,7 @@ body{
   background:none;
   position:absolute;
   top:10px;
-  right:5%;
+  right:5.99%;
   line-height:45px;
   padding:5px 15px 0px 15px;
   color:whitesmoke;
@@ -93,7 +130,7 @@ body{
   background:none;
   position:absolute;
   top:10px;
-  right:5%;
+  right:5.99%;
   padding:7px 15px 0px 15px;
   color:white;
   border:0;
@@ -124,74 +161,6 @@ span{padding-left:20px;}
 a{color:#336699;}
 
 
-
-
-#description{
-    position: absolute;
-    left:17%;
-    top:15%;
-    text-align:center;
-    width:70%;
-    font-size: 50px;
-    color: black;
-    line-height: 1.5;
-    opacity: 120%;
-    text-shadow: 0px 1px 1px rgba(0, 0, 0, 0.1);
-    
-}
-
-
-#map-conteiner{
-    height: 37%;
-    position: absolute;
-    top:44%;
-    left:8.6%;
-    border: solid;
-    border-color:currentColor;
-}
-
-#mapid{
-    position: relative;
-    max-width:100%;
-    max-height: 100%;
-    width:100%;
-    height: 100%;
-    z-index: 100;
-}
-
-.wrapper{
-    position: absolute;
-     background: rgb(225,225,225);
-    background: linear-gradient(90deg, rgba(225,225,225,0.40667604932598034) 0%, rgba(207,207,207,0.4767040605304622) 100%); 
-    width: 100%;
-    height: 41%;
-    top:42%;
-    opacity: 30%;
-}
-
-.scale-btn{
-    position: absolute;
-    top:1%;
-    right:0.5%;
-    width: 5%;
-    height: 10%; 
-    z-index: 1000;
-    background: white;
-    opacity: 80%;
-    box-shadow: 20 20 20;
-    border: 1px solid grey;
-}
-
-.pin-btn{
-    width:100%;
-    height: 100%;
-}
-
-.scale-btn:hover{
-    background: grey;
-    transition: 0.1s;
-}
-
 .inner-footer{
     position: absolute;
     bottom: 0;
@@ -207,13 +176,14 @@ a{color:#336699;}
 .git-link{
     width:4.2%;
     margin-top:50px;
-    margin-left:2%;
+    margin-left:4%;
     border-radius: 80%;
 }
 
 .telegram-link{
     width:3.85%;
     margin-top:50px;
+    margin-left:2%;
     border-radius: 80%;
 }
 
@@ -256,6 +226,13 @@ a{color:#336699;}
     .menu{
         top:69px;
     }
+    
+    .what{
+     position: relative;
+        top:12%;
+        width:60%;
+        left:21.5%;
+    }
 }
 
 @media  (max-width: 991px){
@@ -283,11 +260,11 @@ a{color:#336699;}
         right:20%;
     }
     .git-link{
-        width:8%;
+        width:6%;
     }
     
     .telegram-link{
-        width:8.8%;
+        width:5.8%;
     }
     
     #name{
@@ -318,22 +295,55 @@ a{color:#336699;}
 }
 
 @media (min-width: 400px) and (max-width: 700.98px){
+
+    .general-info{
+        width:100vw;
+        text-align: inherit;
+        left:-15%;
+        font-size:15px;
+        top:10%;
+    }
+
+    #about-info{
+        width:85%;
+        font-size: 15px;
+       
+    }
     
+    .about{
+        font-size: 30px;
+        left:15%;
+        margin-bottom:20px;
+        
+    }
+    
+    .what{
+        font-size:15px;
+        width:85%;
+    }
+    
+    .what-about-tehnology{
+        width:85%;
+        font-size:15px;
+    }
     
     .content{
-        height: 100vh;
+        height: 190vh;
     }
     
     .header{
-        height: 90vh;
+        height: 190vh;
     }
     
     .inner-footer{
-        height: 10vh;
+        height: 15vh;
     }
     
     .inner-header{
         height: 70px;
+    }
+    .dots{
+        right: 43%;
     }
   
     #name{
@@ -352,17 +362,18 @@ a{color:#336699;}
     }
     
     .git-link{
-        position:relative;
         width:7.7%;
-        margin-left:33px;
         margin-top:30px;
     }
     
     .telegram-link{
-        position:relative;
-        width:8%;
-        margin-left:33px;
+        width:6.5%;
         margin-top:30px;
+    }
+    
+    .scale-btn{
+        top:2%;
+        width:9%;
     }
     
     .menu{
@@ -370,25 +381,92 @@ a{color:#336699;}
     }
 }
 
-@media (max-width: 399px){
+
+@media (max-width: 573px){
     
-   
+    
+    
+    #name{
+        font-size:27px;
+        top:34%;
+        left:17%;
+    }
+    
+    .hamburger{
+        right: 10px;
+    }
+    
+    .cross{
+        right: 10px;
+    }
+    
     .content{
-        height: 92vh;
+        height: 270vh;
     }
     
     .header{
-        height: 82vh;
+        height: 265vh;
+    }
+}
+
+@media (max-width: 423px){
+    
+    .general-info{
+        width:100vw;
+        text-align: inherit;
+        left:-15%;
+        font-size:15px;
+        top:10%;
+    }
+
+    #about-info{
+        width:85%;
+        font-size: 15px;
+       
+    }
+    
+    .abilities{
+        left:10%;
+        width:90%;
+    }
+    
+    .about{
+        font-size: 30px;
+        left:15%;
+        margin-bottom:20px;
+        
+    }
+    
+    .what{
+        font-size:15px;
+        width:85%;
+    }
+    
+    .what-about-tehnology{
+        width:85%;
+        font-size:15px;
+    }
+    
+    .header{
+        line-height: 1.2;
+    }
+    
+    .content{
+        height: 180vh;
+    }
+    
+    .header{
+        height: 180vh;
     }
     
     .inner-footer{
-        height: 10vh;
+        height: 15vh;
     }
     
     #name{
        font-size:25px;
        top:44%;
-       left:18%;
+       left:20%;
    }
  
      #header-ico{
@@ -405,25 +483,24 @@ a{color:#336699;}
     }
     
     .git-link{
-        width:7.7%;
-        margin-top:30px;
+        width:10.5%;
     }
     
     .telegram-link{
-        width:6.5%;
-        margin-top:30px;
+        width:10.3%;
     }
     
     .hamburger{
-        right: 3px;
+        right: 5px;
     }
     
     .cross{
-        right: 4px;
+        right: 5px;
     }
+     
 }
 
-@media (max-width: 290px){
+@media (max-width: 347px){
       #name{
        font-size:18px;
        top:44%;
@@ -435,6 +512,14 @@ a{color:#336699;}
         width:3.2rem;
         height:3.2rem;
         left:1%;
+    }
+    
+    .content{
+        height: 380vh;
+    }
+    
+    .header{
+        height: 370vh;
     }
     
 }
