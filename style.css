@@ -1,10 +1,11 @@
 *{
   box-sizing: border-box;  
+  color: black;
+  font-family: 'Roboto', sans-serif;
 }
 
 body{
     font-size: 20px;
-    font-family: 'Roboto', sans-serif;
     margin: 0;
     
 }
@@ -21,7 +22,8 @@ body{
     background: #EEEFF1;
     top:0;
     background-size: 300% 300%;
-  
+    padding: 20px;
+    line-height: 1.7;
     box-shadow: 2px 0 3px #000;
 }
 
@@ -34,7 +36,7 @@ body{
     z-index: 4000;
     line-height:60px;
     text-align: center;
-    align-content: space-around;
+ 
     background: #34547A;
    
     background-size: 200% 200%;
@@ -57,8 +59,8 @@ body{
 
 #name{
     position: absolute;
-    top:20%;
-    left: 22.5%;
+    top:12%;
+    left: 19.5%;
     color: white;
     font-size: 3rem ;
     text-shadow: 0px 1px 1px rgba(0, 0, 0, 0.9);
@@ -76,12 +78,12 @@ body{
   background:none;
   position:absolute;
   top:10px;
-  right:50px;
+  right:5%;
   line-height:45px;
   padding:5px 15px 0px 15px;
   color:whitesmoke;
   border:0;
-  font-size:1.4em;
+  font-size:2rem;
   font-weight:bold;
   cursor:pointer;
   outline:none;
@@ -91,7 +93,7 @@ body{
   background:none;
   position:absolute;
   top:10px;
-  right:50px;
+  right:5%;
   padding:7px 15px 0px 15px;
   color:white;
   border:0;
@@ -102,7 +104,7 @@ body{
   outline:none;
   z-index:10000000000000;
 }
-.menu{z-index:3000; font-weight:bold; font-size:1rem; width:100%; background:#f1f1f1;  position:fixed; text-align:center; font-size:14px; top:70px; }
+.menu{line-height: 2.5; z-index:3000; font-weight:bold; font-size:1rem; width:100%; background:#f1f1f1;  position:fixed; text-align:center; font-size:14px; top:70px; }
 .menu ul {margin: 0; padding: 0; list-style-type: none; list-style-image: none;}
 .menu li {display: block;   padding:15px 0 15px 0; border-bottom:#dddddd 1px solid;}
 .menu li:hover{display: block;    background:#ffffff; padding:15px 0 15px 0; border-bottom:#dddddd 1px solid;}
@@ -205,14 +207,13 @@ a{color:#336699;}
 .git-link{
     width:4.2%;
     margin-top:50px;
-    margin-left:4%;
+    margin-left:2%;
     border-radius: 80%;
 }
 
 .telegram-link{
     width:3.85%;
     margin-top:50px;
-    margin-left:2%;
     border-radius: 80%;
 }
 
@@ -282,11 +283,11 @@ a{color:#336699;}
         right:20%;
     }
     .git-link{
-        width:6%;
+        width:8%;
     }
     
     .telegram-link{
-        width:5.8%;
+        width:8.8%;
     }
     
     #name{
@@ -324,18 +325,15 @@ a{color:#336699;}
     }
     
     .header{
-        height: 85vh;
+        height: 90vh;
     }
     
     .inner-footer{
-        height: 15vh;
+        height: 10vh;
     }
     
     .inner-header{
         height: 70px;
-    }
-    .dots{
-        right: 43%;
     }
   
     #name{
@@ -354,18 +352,17 @@ a{color:#336699;}
     }
     
     .git-link{
+        position:relative;
         width:7.7%;
+        margin-left:33px;
         margin-top:30px;
     }
     
     .telegram-link{
-        width:6.5%;
+        position:relative;
+        width:8%;
+        margin-left:33px;
         margin-top:30px;
-    }
-    
-    .scale-btn{
-        top:2%;
-        width:9%;
     }
     
     .menu{
@@ -373,26 +370,25 @@ a{color:#336699;}
     }
 }
 
-
 @media (max-width: 399px){
     
    
     .content{
-        height: 100vh;
+        height: 92vh;
     }
     
     .header{
-        height: 90vh;
+        height: 82vh;
     }
     
     .inner-footer{
-        height: 15vh;
+        height: 10vh;
     }
     
     #name{
        font-size:25px;
        top:44%;
-       left:20%;
+       left:18%;
    }
  
      #header-ico{
@@ -407,25 +403,24 @@ a{color:#336699;}
         font-size: 25px;
         width:90%;
     }
-    .scale-btn{
-        display: none;
-    }
+    
     .git-link{
-        width:10.5%;
+        width:7.7%;
+        margin-top:30px;
     }
     
     .telegram-link{
-        width:10.3%;
+        width:6.5%;
+        margin-top:30px;
     }
     
     .hamburger{
-        right: 5px;
+        right: 3px;
     }
     
     .cross{
-        right: 5px;
+        right: 4px;
     }
-     
 }
 
 @media (max-width: 290px){
