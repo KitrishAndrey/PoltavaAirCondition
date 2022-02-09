@@ -5,8 +5,10 @@
     <meta charset="UTF-8">
     <title>PoltavaAirCondition</title>
     
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="header-ico.png" type="image/x-icon">
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link
     rel="stylesheet"
           href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
@@ -17,11 +19,11 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet"> 
     
- 
-    
 </head>
 <body>
     <div class="content">
+    <div class="inner-header">
+               <div class="content">
     <div class="inner-header">
             <img class="col-4" id="header-ico" src="header-ico.png">
             <h1 class="col-8" id="name">Poltava Air Condition</h1>
@@ -31,20 +33,19 @@
     </div>
         <div class="menu">
             <ul>
-            <a href="#"><li>МАПА</li></a>
-            <a href="#"><li>ПРО ПРОЄКТ</li></a>
+            <a href="https://poltavaaircondition.online/polution/polutionmap.html"><li>МАПА</li></a>
+            <a href="https://poltavaaircondition.online/info/infopage.html"><li>ПРО ПРОЕКТ</li></a>
+            
             </ul>
         </div> 
         
-    
-        
                   
         <div class="header" id="firstpage">
-            <p class="col-8" id="description"> Слідкуйте за станом повітря у місті Полтава разом з <br><strong>Poltava Air Condition</strong> 
+            <p class="col-8" id="description"> Слідкуйте за станом повітря по місту Полтава разом із <br><strong>Poltava Air Condition</strong>
+            
             <div class="wrapper"></div>
              <div class="col-10" id="map-conteiner">
                 <div class="map" id="mapid"></div>
-                <a class="scale-btn" href="polutionmap.html"><img src="pin.svg" class="pin-btn"></a>
             </div>
         </div>
         
@@ -54,7 +55,7 @@
               <a href="https://t.me/Odas00"><img src="free-icon-telegram-2111813.svg" class="telegram-link"></a>
     </div>
     </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
      <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
         integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
         crossorigin=""></script>
@@ -63,7 +64,7 @@
 
     <script>
         
-        $( document ).ready(function() {
+         $( document ).ready(function() {
 
         $( ".cross" ).hide();
             $( ".menu" ).hide();
@@ -90,51 +91,17 @@
         id: 'mapbox/streets-v11',
         tileSize: 512,
         zoomOffset: -1,
-        accessToken: '******************'
+        accessToken: '***********************************************'
          }).addTo(mymap);
-         
-         const contentString = '<div class="flyier" id="flyier">'+'<article class="card-1">' +
-              
-                    '<p class="spec">PM2.5</p>'+
-                    '<p class="value" id="AQI">136 мкг/м3</p>'+
-                    '<hr>'+
-                    '<p class="spec">CO2</p>'+
-                    '<p class="value" id="CO2">45 ppm(млн−1)</p>'+
-                    '<hr>'+
-                    '<p class="spec">Температура</p>'+
-                    '<p class="value" id="Temperature">14°C</p>'+
-                    '<hr>'+
-                    '<p class="spec">Вологість</p>'+
-                    '<p class="value" id="Humidity">50%</p>'+
-            '</article>'+
-            
-        '</div>' ;
-         
-         const contentString1 = '<div class="flyier" id="flyier">'+'<article class="card-1">' +
-              
-                    '<p class="spec">PM2.5</p>'+
-                    '<p class="value" id="AQI1">136 мкг/м3</p>'+
-                    '<hr>'+
-                    '<p class="spec">CO2</p>'+
-                    '<p class="value" id="CO21">45 ppm(млн−1)</p>'+
-                    '<hr>'+
-                    '<p class="spec">Температура</p>'+
-                    '<p class="value" id="Temperature1">14°C</p>'+
-                    '<hr>'+
-                    '<p class="spec">Вологість</p>'+
-                    '<p class="value" id="Humidity1">50%</p>'+
-            '</article>'+
-            
-        '</div>' ;
          
          
          var LeafIcon = L.Icon.extend({
             options: {
-            iconSize:     [90, 95],
-            shadowSize:   [50, 64],
-            iconAnchor:   [22, 94],
-            shadowAnchor: [4, 62],
-            popupAnchor:  [15, -78]
+            iconSize:     [50, 55],
+            shadowSize:   [40, 60],
+            iconAnchor:   [22, 60],
+            shadowAnchor: [4, 60],
+            popupAnchor:  [2.5, -45]
             }
                 });
          
@@ -144,19 +111,43 @@
             });
          
          function clickZoom(e) {
-              mymap.flyTo(e.target.getLatLng(), 16);
+               window.open("https://poltavaaircondition.online/polution/polutionmap.html");
             };
-         var marker = L.marker([49.5843, 34.5877], {icon: greenIcon, autoPan: false}).addTo(mymap);
-         marker.bindPopup(contentString).on('popupopen', clickZoom);
          
-         var marker = L.marker([49.60058, 34.53116 ], {icon: greenIcon, autoPan: false}).addTo(mymap);
-         marker.bindPopup(contentString1).on('popupopen', clickZoom);
+         var marker = L.marker([49.58093,34.55592], {icon: greenIcon, autoPan: false}).addTo(mymap);
+         marker.on('click', clickZoom);
+         
+         var marker = L.marker([49.58547,34.58906], {icon: greenIcon, autoPan: false}).addTo(mymap);
+         marker.on('click', clickZoom);
+         
+         var marker = L.marker([49.59693,34.55663], {icon: greenIcon, autoPan: false}).addTo(mymap);
+         marker.on('click', clickZoom);
+         
+         var marker = L.marker([49.60332,34.50213], {icon: greenIcon, autoPan: false}).addTo(mymap);
+         marker.on('click', clickZoom);
+         
+         var marker = L.marker([49.57427,34.49373], {icon: greenIcon, autoPan: false}).addTo(mymap);
+         marker.on('click', clickZoom);
+         
+         var marker = L.marker([49.59587,34.52960], {icon: greenIcon, autoPan: false}).addTo(mymap);
+         marker.on('click', clickZoom);
          
         
         document.querySelector('.menu-open').addEventListener('click', () => {
         document.getElementById("menu").classList.toggle('show-menu');
         });
         
+        document.querySelector('#menuitem').addEventListener('click', () => {
+        document.getElementById("menu").classList.remove('show-menu');
+        });
+        
+        document.querySelector('#menuitem1').addEventListener('click', () => {
+        document.getElementById("menu").classList.remove('show-menu');
+        });
+        
+        document.querySelector('#menuitem2').addEventListener('click', () => {
+        document.getElementById("menu").classList.remove('show-menu');
+        });
     </script>
 </body>
 </html>
