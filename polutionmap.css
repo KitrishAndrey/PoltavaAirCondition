@@ -27,11 +27,16 @@
     height: 35px; 
 }
 
+.leaflet-marker-icon{
+    width:50px;
+    height:55px;
+}
+
 
 .flyier{
     position: relative;
     height: 500px;
-    width: 6000px;
+    width: 613px;
 }
 
 .card-1{
@@ -40,27 +45,126 @@
     flex-flow: row;
     font-size:20px;
 }
-
-.spec{
-    display: flex;
-    border: white;
-    border-radius: 90%;
+.widget-container {
+  width: 412px;
+  height: 300px;
+  display: block;
+ 
+  border-radius: 15px;
+/*   border: 5px solid #eceff1; */
+  margin: 0 auto;
 }
 
-.value{
+
+/* Widget 4 Quarter Division here */
+
+.top-left {
     position: relative;
-    display: flex;
-    flex-direction:row;
-    top:34px;
-    left: -70px;
-    width:100px;
+    top:-70px;
+  right:66.6px;
+  height: 15%;
+  width: 40%;
+  /*   background-color:red; */
+  padding: 55px 0 0 70px;
+  display: inline-block;
 }
+
+.bottom-right {
+    position: relative;
+    bottom:-4px;
+   height: 54%;
+       width: 99%;
+  /*   background-color: brown; */
+    color:black;
+    float: right;
+    padding: 0 0 60px;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+  padding: 0;
+}
+
+
+/* Top-left Div CSS */
+
+
+#day {
+  font-weight: 700;
+  font-size: 25px;
+  margin-top: 18px;
+}
+
+#date {
+  font-weight: 500;
+  font-size: 15px;
+  margin-top: 4px;
+}
+
+#time {
+  font-weight: 400;
+  font-size: 15px;
+  margin-top: 8px;
+}
+
+.top-left > a {
+  text-decoration: none;
+  color: white;
+}
+
+.top-left > a:hover {
+  color: #b0bec5;
+}
+
+
+
+
+/* Horizontal-Half-divider */
+
+.horizontal-half-divider {
+  width: 100%;
+  height: 2px;
+  margin-top: -55px;
+  background-color: #5d686e;
+}
+
+
+/* Bottom-left CSS */
+
+#temperature,
+#celsius,
+#temp-divider,
+#fahrenheit {
+  display: inline;
+  vertical-align: middle;
+}
+
+
+/* Bottom-Right CSS */
+
+.other-details-key {
+    float: left;
+    font-size: 13.5px;
+    font-weight: 300;
+}
+
+.other-details-values {
+   float: left;
+    font-size: 13.5px;
+    font-weight: 400;
+    margin-left: 100px;
+}
+
 
 .leaflet-popup-content-wrapper {
-    width: 670px;
+    width: 450px;
+    height: 336px;
+    background: rgb(252,252,255) !important;
 
 }
-
 
 /*Legend specific*/
 .AQILEGEND{
@@ -68,18 +172,29 @@
     position: relative;
     flex-direction: column;
     margin-left: 8px;
-      padding: 6px 8px;
-        background: white;
+    padding: 6px 8px;
+    background: white;
     background: rgba(255, 255, 255, 0.8);
   /*box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);*/
   /*border-radius: 5px;*/
-    line-height: 24px;
+    line-height: 20px;
     color: black;
     width:70px;
-    border-radius: 5%;
+    border-radius: 5px;
     border: 1px solid #666;
-    
 }
+
+.CO2LEGENDOPEN{
+    width:50px;
+    height:16px;
+    display: none;
+}
+
+
+.show-CO2{
+    height:300px;
+}
+
 
 .l-0{
     background: #bbbbbb;
@@ -103,20 +218,155 @@
     background: #66001f;
 }
 
-@media only screen and (max-width:768px){
+
+.row-1 {
+    font-weight: 500;
+    padding:  20px 38px;
+    border: 0.5px solid lightgrey;
+    border-radius:13px;
+}
+.row-1.col-3 {
+    background:white;
+    position: relative;
+    left:85px;
+    top:5px;
+}
+
+.row-1.col-3:hover {
+    background: rgb(221,221,224, 0.3);
+}
+
+@media only screen and (max-width: 1025px){
     
-    .menu{
-        font-size:25px;
-        width:300px;
+    .widget-container{
+        width:270px;
+        height: 350px;
     }
     
-    .flyier{
-        font-size: 20px;
+    .leaflet-popup-content-wrapper {
+        width: 320px;
+        height: 370px;
+
+    }
+    
+    .top-left{
+        position: inherit;
+        padding: 0px !important;
+        height: 65%;
+    }
+    
+    #day {
+    font-size: 20px;
+    }
+
+    #date {
+    font-size: 15px;
+    }
+
+    #time {
+        font-size: 15px;
+    }
+    .other-details-key {
+        float: left;
+        font-size: 13.5px;
+        font-weight: 300;
+    }
+
+    .other-details-values {
+        float: left;
+        font-size: 13.5px;
+        font-weight: 400;
+        margin-left: 100px;
+    }
+    
+    .bottom-right {
+       height: 54%;
+       width: 99%;
+    }
+    
+    .row-1 {
+        padding:  10px 28px;
+    }
+
+    .row-1.col-3 {
+        left:32px;
+        top:20px;
+    }
+
+    
+}
+
+@media only screen and (max-width: 427px){
+    
+    .widget-container{
+        left:0;
+        top:0;
+        width:230px;
+        height: 250px;
+    }
+    
+    .leaflet-popup-content-wrapper {
+        width: 250px;
+        height: 280px;
+    }
+    .top-left{
+        position: inherit;
+        padding: 0px !important;
+        height: 65%;
+    }
+    #day {
+    font-size: 15px;
+    }
+
+    #date {
+    font-size: 10px;
+    width:100px;
+    }
+
+    #time {
+        font-size: 10px;
+    }
+    .other-details-key {
+        float: left;
+        font-size: 10.5px;
+        font-weight: 400;
+        margin:10px 0 !important ;
+    }
+
+    .other-details-values {
+        float: left;
+        font-size: 10.5px;
+        font-weight: 300;
+        margin:10px 45px !important ;
+    }
+    
+    .bottom-right {
+       height: 34%;
+       width: 99%;
+       bottom: 10px;
+    }
+    
+    .horizontal-half-divider {
+        height:2.3px;
+        margin-top: -45px;
+    }
+    
+    .AQILEGEND{
+        width:60px;
+        height:160px;
+    }
+    
+     .row-1.col-3 {
+        left:1px;
+        top:3px;
     }
    
 }
 
-@media only screen and (min-width:200px){
+
+
+
+@media only screen and (max-width:200px){
     .menu{
         font-size:25px;
         width:350px;
@@ -131,9 +381,4 @@
     }
     
      
-}
-
-
-@media screen and (max-width:380px){
-  
 }
