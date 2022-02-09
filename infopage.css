@@ -1,91 +1,52 @@
 *{
-    box-sizing: border-box;  
-    color: black;
-    font-family: 'Roboto', sans-serif;
+  box-sizing: border-box;  
+  color: black;
+  font-family: 'Roboto', sans-serif;
 }
 
 body{
     font-size: 20px;
     margin: 0;
+    
 }
+
 .content{
     position: relative;
-    height:170vh;
-    width:100vw;
+    height:220vh;
 }
 
 .header {
     width: 100%;
-    height: 150vh;
-    position: relative;
+    height: 210vh;
+    position: absolute;
     background: #EEEFF1;
     top:0;
     background-size: 300% 300%;
-    box-shadow: 2px 0 3px #000;
-    text-align:justify;
     padding: 20px;
     line-height: 1.7;
+    box-shadow: 2px 0 3px #000;
 }
 
-.general-info{
-    position: absolute;
-    top:15%;
-    left:-0.5%;
-    text-align: inherit;
-}
 
-.about{
-    position: relative;
-    top:7%;
-    text-align: center;
-}
-
-#about-info{
-    position: relative;
-    top:7%;
-    width:60%;
-    left:21.5%;
-    
-}
-
-.what{
-    position: relative;
-    top:7%;
-    width:60%;
-    left:21.5%;
-}
-
-.abilities{
-    position: relative;
-    top:5%;
-    width:60%;
-    left:21.5%;
-    margin: 40px;
-    padding: 20px;
-    line-height: 2
-}
-
-.what-about-tehnology{
-    position: relative;
-    top:3%;
-    width:60%;
-    left:21.5%;
-}
 
 .inner-header{
-    position:fixed;
+    position:absolute;
     height: 70px;
-    width: 100vw;
+    width: 100%;
     z-index: 4000;
     line-height:60px;
     text-align: center;
-    align-content: space-around;
+ 
     background: #34547A;
    
     background-size: 200% 200%;
     -webkit-box-shadow: 0px 2px 3px 3px rgba(39, 53, 64, 0.2);
     -moz-box-shadow: 0px 2px 3px 3px rgba(39, 53, 64, 0.2);
     box-shadow: 0px 2px 3px 3px rgba(39, 53, 64, 0.2);
+}
+
+.inner-header_black{
+    background: currentColor;
 }
 
 #header-ico{
@@ -98,17 +59,18 @@ body{
 
 #name{
     position: absolute;
-    top:20%;
-    left: 22.5%;
+    top:12%;
+    left: 19.5%;
     color: white;
     font-size: 3rem ;
     text-shadow: 0px 1px 1px rgba(0, 0, 0, 0.9);
     
 }
 
+
 .hr{
-    background-color: #666;
-    color:#666;
+    background-color: white;
+    color:white;
     width:100%;
 }
 
@@ -116,12 +78,12 @@ body{
   background:none;
   position:absolute;
   top:10px;
-  right:50px;
+  right:5%;
   line-height:45px;
   padding:5px 15px 0px 15px;
   color:whitesmoke;
   border:0;
-  font-size:1.4em;
+  font-size:2rem;
   font-weight:bold;
   cursor:pointer;
   outline:none;
@@ -131,7 +93,7 @@ body{
   background:none;
   position:absolute;
   top:10px;
-  right:50px;
+  right:5%;
   padding:7px 15px 0px 15px;
   color:white;
   border:0;
@@ -142,7 +104,7 @@ body{
   outline:none;
   z-index:10000000000000;
 }
-.menu{z-index:3000; font-weight:bold; font-size:1rem; width:100%; background:#f1f1f1;  position:fixed; text-align:center; font-size:14px; top:70px; }
+.menu{line-height: 2.5; z-index:3000; font-weight:bold; font-size:1rem; width:100%; background:#f1f1f1;  position:fixed; text-align:center; font-size:14px; top:70px; }
 .menu ul {margin: 0; padding: 0; list-style-type: none; list-style-image: none;}
 .menu li {display: block;   padding:15px 0 15px 0; border-bottom:#dddddd 1px solid;}
 .menu li:hover{display: block;    background:#ffffff; padding:15px 0 15px 0; border-bottom:#dddddd 1px solid;}
@@ -162,6 +124,74 @@ span{padding-left:20px;}
 a{color:#336699;}
 
 
+
+
+#description{
+    position: absolute;
+    left:17%;
+    top:15%;
+    text-align:center;
+    width:70%;
+    font-size: 50px;
+    color: black;
+    line-height: 1.5;
+    opacity: 120%;
+    text-shadow: 0px 1px 1px rgba(0, 0, 0, 0.1);
+    
+}
+
+
+#map-conteiner{
+    height: 37%;
+    position: absolute;
+    top:44%;
+    left:8.6%;
+    border: solid;
+    border-color:currentColor;
+}
+
+#mapid{
+    position: relative;
+    max-width:100%;
+    max-height: 100%;
+    width:100%;
+    height: 100%;
+    z-index: 100;
+}
+
+.wrapper{
+    position: absolute;
+     background: rgb(225,225,225);
+    background: linear-gradient(90deg, rgba(225,225,225,0.40667604932598034) 0%, rgba(207,207,207,0.4767040605304622) 100%); 
+    width: 100%;
+    height: 41%;
+    top:42%;
+    opacity: 30%;
+}
+
+.scale-btn{
+    position: absolute;
+    top:1%;
+    right:0.5%;
+    width: 5%;
+    height: 10%; 
+    z-index: 1000;
+    background: white;
+    opacity: 80%;
+    box-shadow: 20 20 20;
+    border: 1px solid grey;
+}
+
+.pin-btn{
+    width:100%;
+    height: 100%;
+}
+
+.scale-btn:hover{
+    background: grey;
+    transition: 0.1s;
+}
+
 .inner-footer{
     position: absolute;
     bottom: 0;
@@ -177,14 +207,13 @@ a{color:#336699;}
 .git-link{
     width:4.2%;
     margin-top:50px;
-    margin-left:4%;
+    margin-left:2%;
     border-radius: 80%;
 }
 
 .telegram-link{
     width:3.85%;
     margin-top:50px;
-    margin-left:2%;
     border-radius: 80%;
 }
 
@@ -254,11 +283,11 @@ a{color:#336699;}
         right:20%;
     }
     .git-link{
-        width:6%;
+        width:8%;
     }
     
     .telegram-link{
-        width:5.8%;
+        width:8.8%;
     }
     
     #name{
@@ -290,27 +319,21 @@ a{color:#336699;}
 
 @media (min-width: 400px) and (max-width: 700.98px){
     
-    .general-info{
-        top:10%;
-    }
     
     .content{
-        height: 250vh;
+        height: 100vh;
     }
     
     .header{
-        height: 245vh;
+        height: 90vh;
     }
     
     .inner-footer{
-        height: 15vh;
+        height: 10vh;
     }
     
     .inner-header{
         height: 70px;
-    }
-    .dots{
-        right: 43%;
     }
   
     #name{
@@ -329,18 +352,17 @@ a{color:#336699;}
     }
     
     .git-link{
+        position:relative;
         width:7.7%;
+        margin-left:33px;
         margin-top:30px;
     }
     
     .telegram-link{
-        width:6.5%;
+        position:relative;
+        width:8%;
+        margin-left:33px;
         margin-top:30px;
-    }
-    
-    .scale-btn{
-        top:2%;
-        width:9%;
     }
     
     .menu{
@@ -348,66 +370,25 @@ a{color:#336699;}
     }
 }
 
-
-@media (max-width: 573px){
-    
-    
-    
-    #name{
-        font-size:27px;
-        top:34%;
-        left:17%;
-    }
-    
-    .hamburger{
-        right: 10px;
-    }
-    
-    .cross{
-        right: 10px;
-    }
-    
-    .content{
-        height: 270vh;
-    }
-    
-    .header{
-        height: 265vh;
-    }
-}
-
-@media (max-width: 423px){
+@media (max-width: 399px){
     
    
-    .general-info{
-        top:5%;
-        width:100%;
-    }
-    
-    .header{
-        line-height: 1.2;
-    }
-    
-    .abilities{
-        left:10%;
-    }
-    
     .content{
-        height: 300vh;
+        height: 92vh;
     }
     
     .header{
-        height: 290vh;
+        height: 82vh;
     }
     
     .inner-footer{
-        height: 15vh;
+        height: 10vh;
     }
     
     #name{
        font-size:25px;
        top:44%;
-       left:20%;
+       left:18%;
    }
  
      #header-ico{
@@ -424,24 +405,25 @@ a{color:#336699;}
     }
     
     .git-link{
-        width:10.5%;
+        width:7.7%;
+        margin-top:30px;
     }
     
     .telegram-link{
-        width:10.3%;
+        width:6.5%;
+        margin-top:30px;
     }
     
     .hamburger{
-        right: 5px;
+        right: 3px;
     }
     
     .cross{
-        right: 5px;
+        right: 4px;
     }
-     
 }
 
-@media (max-width: 347px){
+@media (max-width: 290px){
       #name{
        font-size:18px;
        top:44%;
@@ -453,14 +435,6 @@ a{color:#336699;}
         width:3.2rem;
         height:3.2rem;
         left:1%;
-    }
-    
-    .content{
-        height: 380vh;
-    }
-    
-    .header{
-        height: 370vh;
     }
     
 }
