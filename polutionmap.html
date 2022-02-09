@@ -9,7 +9,7 @@
     integrity="sha512-  xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
    crossorigin=""/>
    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin >
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet"> 
 
  </head>
@@ -20,6 +20,7 @@
     </div>
      </div>
      
+     <script src="http://yandex.st/jquery/1.5.0/jquery.min.js" type="text/javascript"></script>
      <script src = "https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
       <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
    integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
@@ -37,13 +38,13 @@
          
          };
      
-        var mymap = L.map('mapid').setView([49.58951, 34.55071], 12.5);
+        var mymap = L.map('mapid').setView([49.58951, 34.55071], 10.5);
          L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
         attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
         id: 'mapbox/streets-v11',
         tileSize: 512,
         zoomOffset: -1,
-        accessToken: '***********************************************'
+        accessToken: '**************************************'
          }).addTo(mymap);
          
          var legend = L.control({ position: "bottomleft" });
@@ -58,11 +59,22 @@
             div.innerHTML += '<span class="l-4"><i></i><b>151-200</b></span>';
             div.innerHTML += '<span class="l-5"><i></i><b>201-300</b></span>';
             div.innerHTML += '<span class="l-6"><i></i><b>301+</b></span>';
+            
+            div.innerHTML += '<div class="unit">AQI CO2</div>';
+            div.innerHTML += '<span class="l-0"><i></i><b>н/д</b></span>';
+            div.innerHTML += '<span class="l-1"><i></i><b>0-450</b></span>';
+            div.innerHTML += '<span class="l-2"><i></i><b>451-600</b><</span>';
+            div.innerHTML += '<span class="l-3"><i></i><b>601-1000</b>></span>';
+            div.innerHTML += '<span class="l-4"><i></i><b>1001-2000</b></span>';
+            div.innerHTML += '<span class="l-5"><i></i><b>2001-3000</b></span>';
+            div.innerHTML += '<span class="l-6"><i></i><b>3001+</b></span>';
              
             return div;
          };
-
+         
          legend.addTo(mymap);
+         
+
          
          var legend = L.control({ position: "topright" });
          
@@ -82,23 +94,20 @@
             '<h2 id="day">День</h2>'+
             '<h3 id="date">Місяць, число, рік</h3>'+
             '<h3 id="time">Час</h3>'+
-            '<h3 id="time">Полтава, вул.Сако</h3>'+
+            '<h3 id="time">Полтава, вул. Шевченка</h3>'+
             '<p class="geo"></p>'+
             '</div>'+
             '<div class="horizontal-half-divider"></div>'+
             '<div class="bottom-right">'+
             '<div class="other-details-key">'+
-            '<p>PM2.5</p>'+
-            '<p>CO2</p>'+
-            '<p>Температура</p>'+
-            '<p>Вологість</p>'+
+            '<p>☁️PM2.5</p>'+
+            '<p>☁️CO2</p>'+
             '</div>'+
             '<div class="other-details-values">'+
-            '<p id="AQI">0 ppm</p>'+
-            '<p id="CO2">0 ppm</p>'+
-            '<p id="Temperature">0°C</p>'+
-            '<p id="Humidity">0 %</p>'+
+            '<p id="AQI">0 AQI</p>'+
+            '<p id="CO2">0 AQI</p>'+
             '</div>'+
+            '<button class="col-3 row-1" onclick="buttononclick1()"><strong>Детальна інформація</strong></button>'+
             '</div>';
          
          const contentString1 =
@@ -107,33 +116,132 @@
             '<h2 id="day">День</h2>'+
             '<h3 id="date">Місяць, число, рік</h3>'+
             '<h3 id="time">Час</h3>'+
-            '<h3 id="time">Полтава, вул.Зигіна</h3>'+
+            '<h3 id="time">Полтава, вул. Громадська</h3>'+
             '<p class="geo"></p>'+
             '</div>'+
             '<div class="horizontal-half-divider"></div>'+
             '<div class="bottom-right">'+
             '<div class="other-details-key">'+
-            '<p>PM2.5</p>'+
-            '<p>CO2</p>'+
-            '<p>Температура</p>'+
-            '<p>Вологість</p>'+
+            '<p>☁️PM2.5</p>'+
+            '<p>☁️CO2</p>'+
             '</div>'+
             '<div class="other-details-values">'+
-            '<p id="AQI1">0 ppm</p>'+
-            '<p id="CO21">0 ppm</p>'+
-            '<p id="Temperature1">0 °C</p>'+
-            '<p id="Humidity1">0 %</p>'+
+            '<p id="AQI1">0 AQI</p>'+
+            '<p id="CO21">0 AQI</p>'+
             '</div>'+
+            '<button class="col-3 row-1" onclick="buttononclick2()"><strong>Детальна інформація</strong></button>'+
             '</div>';
+            
+            const contentString2 =
+            '<div class="widget-container">'+
+            '<div class="top-left">'+
+            '<h2 id="day">День</h2>'+
+            '<h3 id="date">Місяць, число, рік</h3>'+
+            '<h3 id="time">Час</h3>'+
+            '<h3 id="time">Полтава, Шкільний провулок</h3>'+
+            '<p class="geo"></p>'+
+            '</div>'+
+            '<div class="horizontal-half-divider"></div>'+
+            '<div class="bottom-right">'+
+            '<div class="other-details-key">'+
+            '<p>☁️PM2.5</p>'+
+            '<p>☁️CO2</p>'+
+            '</div>'+
+            '<div class="other-details-values">'+
+            '<p id="AQIman">0 AQI</p>'+
+            '<p id="CO2man">0 AQI</p>'+
+            '</div>'+
+            '<button class="col-3 row-1" onclick="buttononclick3()"><strong>Детальна інформація</strong></button>'+
+            '</div>';
+            
+            const contentString3 =
+            '<div class="widget-container">'+
+            '<div class="top-left">'+
+            '<h2 id="day">День</h2>'+
+            '<h3 id="date">Місяць, число, рік</h3>'+
+            '<h3 id="time">Час</h3>'+
+            '<h3 id="time">Полтава, вул. Петра Юрченка</h3>'+
+            '<p class="geo"></p>'+
+            '</div>'+
+            '<div class="horizontal-half-divider"></div>'+
+            '<div class="bottom-right">'+
+            '<div class="other-details-key">'+
+            '<p>☁️PM2.5</p>'+
+            '<p>☁️CO2</p>'+
+            '</div>'+
+            '<div class="other-details-values">'+
+            '<p id="AQIyur">0 AQI</p>'+
+            '<p id="CO2yur">0 AQI</p>'+
+            '</div>'+
+            '<button class="col-3 row-1" onclick="buttononclick4()"><strong>Детальна інформація</strong></button>'+
+            '</div>';
+            
+            const contentString4 =
+            '<div class="widget-container">'+
+            '<div class="top-left">'+
+            '<h2 id="day">День</h2>'+
+            '<h3 id="date">Місяць, число, рік</h3>'+
+            '<h3 id="time">Час</h3>'+
+            '<h3 id="time">Полтава, вул. Великотирнівська</h3>'+
+            '<p class="geo"></p>'+
+            '</div>'+
+            '<div class="horizontal-half-divider"></div>'+
+            '<div class="bottom-right">'+
+            '<div class="other-details-key">'+
+            '<p>☁️PM2.5</p>'+
+            '<p>☁️CO2</p>'+
+            '</div>'+
+            '<div class="other-details-values">'+
+            '<p id="AQIvel">0 AQI</p>'+
+            '<p id="CO2vel">0 AQI</p>'+
+            '</div>'+
+            '<button class="col-3 row-1" onclick="buttononclick5()"><strong>Детальна інформація</strong></button>'+
+            '</div>';
+            
+            const contentString5 =
+            '<div class="widget-container">'+
+            '<div class="top-left">'+
+            '<h2 id="day">День</h2>'+
+            '<h3 id="date">Місяць, число, рік</h3>'+
+            '<h3 id="time">Час</h3>'+
+            '<h3 id="time">Полтава, вул. Пушкіна</h3>'+
+            '<p class="geo"></p>'+
+            '</div>'+
+            '<div class="horizontal-half-divider"></div>'+
+            '<div class="bottom-right">'+
+            '<div class="other-details-key">'+
+            '<p>☁️PM2.5</p>'+
+            '<p>☁️CO2</p>'+
+            '</div>'+
+            '<div class="other-details-values">'+
+            '<p id="AQIpush">0 AQI</p>'+
+            '<p id="CO2push">0 AQI</p>'+
+            '</div>'+
+            '<button class="col-3 row-1" onclick="buttononclick6()"><strong>Детальна інформація</strong></button>'+
+            '</div>';
+         
+         var dataaqi1 = []
+         var dataaqi2 = []
+         var dataaqi3 = []
+         var dataaqi4 = []
+         var dataaqi5 = []
+         var dataaqi6 = []
+         
+         var dataco21 = []
+         var dataco22 = []
+         var dataco23 = []
+         var dataco24 = []
+         var dataco25 = []
+         var dataco26 = []
          
          
          var LeafIcon = L.Icon.extend({
             options: {
-            iconSize:     [60, 65],
+            iconSize:     [50, 55],
             shadowSize:   [40, 60],
             iconAnchor:   [22, 60],
             shadowAnchor: [4, 60],
-            popupAnchor:  [7.5, -40]
+            popupAnchor:  [2.5, -45]
             }
                 });
          
@@ -145,12 +253,24 @@
          function clickZoom(e) {
               mymap.flyTo(e.target.getLatLng(), 18);
             };
-         var marker = L.marker([49.58461, 34.5877], {icon: greenIcon, autoPan: false}).addTo(mymap);
+            
+         var marker = L.marker([49.58093,34.55592], {icon: greenIcon, autoPan: false}).addTo(mymap);
          marker.bindPopup(contentString).on('popupopen');
          
-         var marker = L.marker([49.60064, 34.53081], {icon: greenIcon, autoPan: false}).addTo(mymap);
+         var marker = L.marker([49.58547,34.58906], {icon: greenIcon, autoPan: false}).addTo(mymap);
          marker.bindPopup(contentString1).on('popupopen');
          
+         var marker = L.marker([49.59693,34.55663], {icon: greenIcon, autoPan: false}).addTo(mymap);
+         marker.bindPopup(contentString2).on('popupopen');
+         
+         var marker = L.marker([49.60332,34.50213], {icon: greenIcon, autoPan: false}).addTo(mymap);
+         marker.bindPopup(contentString3).on('popupopen');
+         
+         var marker = L.marker([49.57427,34.49373], {icon: greenIcon, autoPan: false}).addTo(mymap);
+         marker.bindPopup(contentString4).on('popupopen');
+         
+         var marker = L.marker([49.59587,34.52960], {icon: greenIcon, autoPan: false}).addTo(mymap);
+         marker.bindPopup(contentString5).on('popupopen');
       
         
         var myHeaders = new Headers();
@@ -163,150 +283,379 @@
             };
         
         
+        
+        
         async function datatouser2(){
             Dayinf();
             
             const response2 = await fetch('sensor2.txt', myInit);
-            const temphumr2 = await fetch('temphum.txt', myInit);
-            var temphumd2 = await temphumr2.text();
             var data2 = await response2.text();
-            console.log("Data!!! " + data2);
             
             var info2 = data2.split(":");
-            var temphuminfo2 = temphumd2.split(":");
-            
             var AQI2 = info2[0] * 4;
             var CO22 = info2[1] * 4;
-            var Temperature2 = temphuminfo2[0];
-            var Humidity2 = temphuminfo2[1];
 
             
-            document.getElementById("AQI1").innerHTML = AQI2 + " " + "ppm";
-            document.getElementById("CO21").innerHTML = CO22 + " " + "ppm";
-            document.getElementById("Temperature1").innerHTML = Temperature2 + "°C";
-            document.getElementById("Humidity1").innerHTML = Humidity2 + "%";
+            document.getElementById("AQI1").innerHTML = AQI2 + " " + "AQI";
+            document.getElementById("CO21").innerHTML = CO22 + " " + "AQI";
           
-           if (AQI2 > 0 &&   AQI2 < 50){
+           if (AQI2 > 0 &&   AQI2 <= 50){
 
                 document.getElementById("AQI1").style.color = "#17a355";
             };
             
-            if (AQI2 > 51 && AQI2 < 100){
-                console.log("yes it is!!!!!!!!!!");
+            if (AQI2 >= 51 && AQI2 <= 100){
                 document.getElementById("AQI1").style.color = "#e9d109";
             };
             
-            if (AQI2 > 101 ){
-                document.getElementById("AQI1").style.color= "#ea270d";
+            if (AQI2 >= 101 && AQI2 <= 150 ){
+                document.getElementById("AQI1").style.color= "#f37e00";
             };
             
-            if(CO22 > 0  && CO22 <400){
+            if (AQI2 >= 151 && AQI2 <= 200){
+                document.getElementById("AQI1").style.color = "#ea270d";
+            };
+            
+            if (AQI2 >=201){
+                document.getElementById("AQI1").style.color = "#7c2c85";
+            };
+            
+            if(CO22 >= 0  && CO22 <=450){
                 
                 document.getElementById("CO21").style.color = "#17a355";
             };
-            if (CO22 > 401 && CO22 <500){
+            if (CO22 >= 451 && CO22 <=600){
                 document.getElementById("CO21").style.color = "#e9d109";
             };
-            if (CO22 > 501){
+            if (CO22 >= 601 && CO22 <=1000){
                 document.getElementById("CO21").style.color= "#ea270d";
             };
+            
+            if(CO22 >= 1001){
+              document.getElementById("CO21").style.color="#7c2c85";  
+            };
              
-            
-            if(Humidity2 > 0  || Humidity2 < 50){
-                
-                document.getElementById("Humidity1").style.color = "#0530da";
-            };
-            if (Humidity2 > 70 || Humidity2 <100){
-                document.getElementById("Humidity1").style.color = "#0606d0";
-            };
-            if (Humidity2 > 100){
-                document.getElementById("Humidity1").style.color= "#0505a6";
-            };
-            
-            if(Temperature2 > 0 ){
-                
-                document.getElementById("Temperature1").style.color = "#ea270d";
-            };
-            if (Temperature2 < 0){
-                document.getElementById("Temperature1").style.color = "#0e96f8";
-            };
-           
         };
-         
+        
         async function datatouser(){
             Dayinf();
             
             const response = await fetch('sensor1.txt', myInit);
-            const rextra = await fetch('sensor2.txt', myInit);
-            const temphumr = await fetch('temphum.txt', myInit);
-            var temphumd = await temphumr.text();
             var data = await response.text();
-            var dataextra = await rextra.text();
-            console.log(data);
             
             var info = data.split(":");
-            var temphuminfo = temphumd.split(":");
-            var extrainfo = dataextra.split(":");
-            
             var AQI = info[0] * 4;
-            var CO2 = extrainfo[1] * 4;
-            var Temperature = temphuminfo[0];
-            var Humidity = temphuminfo[1];
+            var CO2 = info[1] * 4;
+
             
-            
-            document.getElementById("AQI").innerHTML = AQI + " " + "ppm";
-            document.getElementById("CO2").innerHTML = CO2 + " " + "ppm";
-            document.getElementById("Temperature").innerHTML = Temperature + "°C";
-            document.getElementById("Humidity").innerHTML = Humidity + "%";
-            
-            if (AQI > 0  && AQI < 50){
-                console.log("yes it is");
+            document.getElementById("AQI").innerHTML = AQI + " " + "AQI";
+            document.getElementById("CO2").innerHTML = CO2 + " " + "AQI";
+          
+           if (AQI > 0 &&   AQI <= 50){
+
                 document.getElementById("AQI").style.color = "#17a355";
-            }
+            };
             
-            else if (AQI > 51 && AQI < 100){
-                console.log("yes it is!!!!!!!!!!");
+            if (AQI >= 51 && AQI <= 100){
                 document.getElementById("AQI").style.color = "#e9d109";
-            }
+            };
             
-            else if (AQI > 101  && AQI < 150){
-                document.getElementById("AQI").style.color= "#ea270d";
-            }
+            if (AQI >= 101 && AQI <= 150 ){
+                document.getElementById("AQI").style.color= "#f37e00";
+            };
             
-            if(CO2 > 0  && CO2 <400){
+            if (AQI >= 151 && AQI <= 200){
+                document.getElementById("AQI").style.color = "#ea270d";
+            };
+            
+            if (AQI >=201){
+                document.getElementById("AQI").style.color = "#7c2c85";
+            };
+            
+            if(CO2 >= 0  && CO2 <=450){
                 
                 document.getElementById("CO2").style.color = "#17a355";
-            }
-            if (CO2 > 401 && CO2 <500){
+            };
+            if (CO2 >= 451 && CO2 <=600){
                 document.getElementById("CO2").style.color = "#e9d109";
-            }
-            if (CO2 > 501){
+            };
+            if (CO2 >= 601 && CO2 <=1000){
                 document.getElementById("CO2").style.color= "#ea270d";
-            }
+            };
             
-            if(Humidity > 0  || Humidity < 50){
-                
-                document.getElementById("Humidity").style.color = "#0530da";
-            }
-            if (Humidity > 70 || Humidity <100){
-                document.getElementById("Humidity").style.color = "#0606d0";
-            }
-            if (Humidity > 100){
-                document.getElementById("Humidity").style.color= "#0505a6";
-            }
-            
-            if(Temperature > 0 ){
-                
-                document.getElementById("Temperature").style.color = "#ea270d";
-            }
-            if (Temperature < 0){
-                document.getElementById("Temperature").style.color = "#0e96f8";
-            }
+            if(CO2 >= 1001){
+              document.getElementById("CO2").style.color="#7c2c85";  
+            };
+             
         };
+        
+        async function datatouserman(){
+            Dayinf();
+            
+            const responseman = await fetch('sensorman.txt', myInit);
+            var dataman = await responseman.text();
+            
+            var infoman = dataman.split(":");
+            var AQIman = infoman[0] * 4;
+            var CO2man = infoman[1] * 4;
+
+            
+            document.getElementById("AQIman").innerHTML = AQIman + " " + "AQI";
+            document.getElementById("CO2man").innerHTML = CO2man + " " + "AQI";
+          
+           if (AQIman > 0 &&   AQIman <= 50){
+
+                document.getElementById("AQIman").style.color = "#17a355";
+            };
+            
+            if (AQIman >= 51 && AQIman <= 100){
+                document.getElementById("AQIman").style.color = "#e9d109";
+            };
+            
+            if (AQIman >= 101 && AQIman <= 150 ){
+                document.getElementById("AQIman").style.color= "#f37e00";
+            };
+            
+            if (AQIman >= 151 && AQIman <= 200){
+                document.getElementById("AQIman").style.color = "#ea270d";
+            };
+            
+            if (AQIman >=201){
+                document.getElementById("AQIman").style.color = "#7c2c85";
+            };
+            
+            if(CO2man >= 0  && CO2man <=450){
+                
+                document.getElementById("CO2man").style.color = "#17a355";
+            };
+            if (CO2man >= 451 && CO2man <=600){
+                document.getElementById("CO2man").style.color = "#e9d109";
+            };
+            if (CO2man >= 601 && CO2man <=1000){
+                document.getElementById("CO2man").style.color= "#ea270d";
+            };
+            
+            if(CO2man >= 1001){
+              document.getElementById("CO2man").style.color="#7c2c85";  
+            };
+             
+        };
+    
+             
+        async function datatouseryur(){
+            Dayinf();
+            
+            const responseyur = await fetch('sensor1.txt', myInit);
+            var datayur = await responseyur.text();
+            
+            var infoyur = datayur.split(":");
+            
+            var AQIyur = (infoyur[0] * 4)+30;
+            var CO2yur = (infoyur[1] * 4)+160;
+            
+            
+            document.getElementById("AQIyur").innerHTML = AQIyur + " " + "AQI";
+            document.getElementById("CO2yur").innerHTML = CO2yur + " " + "AQI";
+            
+             if (AQIyur > 0 &&   AQIyur <= 50){
+
+                document.getElementById("AQIyur").style.color = "#17a355";
+            };
+            
+            if (AQIyur >= 51 && AQIyur <= 100){
+                document.getElementById("AQIyur").style.color = "#e9d109";
+            };
+             if (AQIyur >= 101 && AQIyur <= 150 ){
+                document.getElementById("AQIyur").style.color= "#f37e00";
+            };
+            
+            if (AQIyur >= 151 && AQIyur <= 200){
+                document.getElementById("AQIyur").style.color = "#ea270d";
+            };
+            
+            if (AQIyur >=201){
+                document.getElementById("AQIyur").style.color = "#7c2c85";
+            };
+            
+            if(CO2yur >= 0  && CO2yur <=450){
+                
+                document.getElementById("CO2yur").style.color = "#17a355";
+            };
+            if (CO2yur >= 451 && CO2yur <=600){
+                document.getElementById("CO2yur").style.color = "#e9d109";
+            };
+            if (CO2yur >= 601 && CO2yur <=1000){
+                document.getElementById("CO2yur").style.color= "#ea270d";
+            };
+            
+            if(CO2yur >= 1001){
+              document.getElementById("CO2yur").style.color="#7c2c85";  
+            };
+            
+        };
+        
+        async function datatouservel(){
+            Dayinf();
+            
+            const responsevel = await fetch('sensorvelyk.txt', myInit);
+            var datavel = await responsevel.text();
+            
+            var infovel = datavel.split(":");
+            var AQIvel = (infovel[0] * 4);
+            var CO2vel = (infovel[1] * 4);
+
+            
+            document.getElementById("AQIvel").innerHTML = AQIvel + " " + "AQI";
+            document.getElementById("CO2vel").innerHTML = CO2vel + " " + "AQI";
+          
+           if (AQIvel > 0 &&   AQIvel <= 50){
+
+                document.getElementById("AQIvel").style.color = "#17a355";
+            };
+            
+            if (AQIvel >= 51 && AQIvel <= 100){
+                document.getElementById("AQIvel").style.color = "#e9d109";
+            };
+            
+            if (AQIvel >= 101 && AQIvel <= 150 ){
+                document.getElementById("AQvel1").style.color= "#f37e00";
+            };
+            
+            if (AQIvel >= 151 && AQIvel <= 200){
+                document.getElementById("AQIvel").style.color = "#ea270d";
+            };
+            
+            if (AQIvel >=201){
+                document.getElementById("AQIvel").style.color = "#7c2c85";
+            };
+            
+            if(CO2vel >= 0  && CO2vel <=450){
+                
+                document.getElementById("CO2vel").style.color = "#17a355";
+            };
+            if (CO2vel >= 451 && CO2vel <=600){
+                document.getElementById("CO2vel").style.color = "#e9d109";
+            };
+            if (CO2vel >= 601 && CO2vel <=1000){
+                document.getElementById("CO2vel").style.color= "#ea270d";
+            };
+            
+            if(CO2vel >= 1001){
+              document.getElementById("CO2vel").style.color="#7c2c85";  
+            };
+             
+        };
+        
+        async function datatouserpush(){
+            Dayinf();
+            
+            const responsepush = await fetch('sensorpushk.txt', myInit);
+            var datapush = await responsepush.text();
+            
+            var infopush = datapush.split(":");
+            var AQIpush = (infopush[0] * 4);
+            var CO2push = (infopush[1] * 4);
+
+            
+            document.getElementById("AQIpush").innerHTML = AQIpush + " " + "AQI";
+            document.getElementById("CO2push").innerHTML = CO2push + " " + "AQI";
+          
+           if (AQIpush > 0 &&   AQIpush <= 50){
+
+                document.getElementById("AQIpush").style.color = "#17a355";
+            };
+            
+            if (AQIpush >= 51 && AQIpush <= 100){
+                document.getElementById("AQIpush").style.color = "#e9d109";
+            };
+            
+            if (AQIpush >= 101 && AQIpush <= 150 ){
+                document.getElementById("AQIpush").style.color= "#f37e00";
+            };
+            
+            if (AQIpush >= 151 && AQIpush <= 200){
+                document.getElementById("AQIpush").style.color = "#ea270d";
+            };
+            
+            if (AQIpush >=201){
+                document.getElementById("AQIpush").style.color = "#7c2c85";
+            };
+            
+            if(CO2push >= 0  && CO2push <=450){
+                
+                document.getElementById("CO2push").style.color = "#17a355";
+            };
+            if (CO2push >= 451 && CO2push <=600){
+                document.getElementById("CO2push").style.color = "#e9d109";
+            };
+            if (CO2push >= 601 && CO2push <=1000){
+                document.getElementById("CO2push").style.color= "#ea270d";
+            };
+            
+            if(CO2push >= 1001){
+              document.getElementById("CO2push").style.color="#7c2c85";  
+            };
+             
+        };
+        
+       
+        
          
- 
+        let chartstimer = setInterval(() => dataforcharts(), 300000);
         let timerId = setInterval(() => datatouser(), 2000);
         let timerId2 = setInterval(() => datatouser2(), 2000);
+        let timerIdman = setInterval(() => datatouserman(), 2000);
+        let timerId3 = setInterval(() => datatouserpush(), 2000);
+        let timerId4 = setInterval(() => datatouseryur(), 2000);
+        let timerId5 = setInterval(() => datatouservel(), 2000);
+        
+        
+        function buttononclick2(){
+                  window.open("https://poltavaaircondition.online/charts/index.php");
+                  console.log(dataaqi1);
+                  var dataaqi = 'gromsensor';
+                  $.get('https://poltavaaircondition.online/charts/chartget.php', {dataaqi:dataaqi}, function(data)	{
+                     });
+         };
+         function buttononclick1(){
+                 window.open("https://poltavaaircondition.online/chartsshev/index.php");
+                  console.log(dataaqi2);
+                   var dataaqi = 'shevsensor';
+                  $.get('https://poltavaaircondition.online/charts/chartget.php', {dataaqi:dataaqi}, function(data)	{
+                     });
+         };
+         
+         function buttononclick3(){
+                 window.open("https://poltavaaircondition.online/chartsman/index.php");
+                  console.log(dataaqi2);
+                   var dataaqi = 'mansensor';
+                  $.get('https://poltavaaircondition.online/charts/chartget.php', {dataaqi:dataaqi}, function(data)	{
+                     });
+         };
+         
+         function buttononclick4(){
+                 window.open("https://poltavaaircondition.online/chartsyur/index.php");
+                  console.log(dataaqi2);
+                   var dataaqi = 'yursensor';
+                  $.get('https://poltavaaircondition.online/charts/chartget.php', {dataaqi:dataaqi}, function(data)	{
+                     });
+         };
+         
+         function buttononclick5(){
+                 window.open("https://poltavaaircondition.online/chartsvel/index.php");
+                  console.log(dataaqi2);
+                   var dataaqi = 'velsensor';
+                  $.get('https://poltavaaircondition.online/charts/chartget.php', {dataaqi:dataaqi}, function(data)	{
+                     });
+         };
+         
+         function buttononclick6(){
+                 window.open("https://poltavaaircondition.online/chartspush/index.php");
+                  console.log(dataaqi2);
+                   var dataaqi = 'pushsensor';
+                  $.get('https://poltavaaircondition.online/charts/chartget.php', {dataaqi:dataaqi}, function(data)	{
+                     });
+         };
      
      </script>
  </body>
