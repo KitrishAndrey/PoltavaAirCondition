@@ -100,44 +100,6 @@ CREATE TABLE `TempPresureHum` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 
---
--- Структура таблицы `Userid`
---
-
-CREATE TABLE `Userid` (
-  `Id` int(11) NOT NULL,
-  `Streetid` text CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `State` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
-
---
--- Структура таблицы `UserStreetid`
---
-
-CREATE TABLE `UserStreetid` (
-  `Id` int(11) NOT NULL,
-  `Streetid` text CHARACTER SET latin1 COLLATE latin1_spanish_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
-
---
--- Индексы сохранённых таблиц
---
-
---
--- Индексы таблицы `Userid`
---
-ALTER TABLE `Userid`
-  ADD PRIMARY KEY (`Id`);
-
---
--- Индексы таблицы `UserStreetid`
---
-ALTER TABLE `UserStreetid`
-  ADD PRIMARY KEY (`Id`);
-COMMIT;
-
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
