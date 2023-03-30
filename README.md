@@ -1,5 +1,5 @@
 # PoltavaAirCondition
-PoltavaAirCondition - is school science project that won # place on Ukrainian tour in Kyiv in 2022🏆. It is aimed to observe local air quality 🌱 and provide all accessible data to the user via interactive map 🗺 Web page is totaly adaptive for any types of devises🖥.
+PoltavaAirCondition - is school science project that won # place on Ukrainian [MAN](https://man.gov.ua/) tour in Kyiv in 2022🏆. It is aimed to observe local air quality 🌱 and provide all accessible data to the user via interactive map 🗺 Web page is totaly adaptive for any types of devises🖥.
 
 ![Main web-site screen](./img/MainScreen.png)
 
@@ -21,7 +21,7 @@ PoltavaAirCondition provides data of air polution sorted by hours in range of 24
 ![Chart 2](./img/Charts2.png)
 
 ### Important information about charts page:
-* First two charts are generated automaticaly with using data from lokal database created with MySQL and using [Charts.js](https://www.chartjs.org/) 
+* First three charts are generated automaticaly with using data from lokal database created with MySQL and using [Charts.js](https://www.chartjs.org/) 
 * The bottom table with temperature, air presure and ect. is generated automaticaly using [OpenWeather API](https://openweathermap.org/)
 
 ## Productivity and speed of PoltavaAirCondition
