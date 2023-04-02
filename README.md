@@ -1,5 +1,5 @@
 # PoltavaAirCondition
-PoltavaAirCondition - is school science project that won # place in Ukrainian [MAN](https://man.gov.ua/) tour in Kyiv in 2022🏆. It is aimed to observe local air quality 🌱 and provide all accessible data to the user via interactive map 🗺 Web page is totaly adaptive for any types of devises🖥.
+PoltavaAirCondition - is school science project that won 3 place in Ukrainian [MAN](https://man.gov.ua/) tour in Kyiv in 2022🏆. It is aimed to observe local air quality 🌱 and provide all accessible data to the user via interactive map 🗺 Web page is totaly adaptive for any types of devises🖥.
 
 ![Main web-site screen](./img/MainScreen.png)
 
